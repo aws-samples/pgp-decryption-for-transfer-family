@@ -39,6 +39,24 @@ _Lambda Function Execution Role_
 - Click "Create Role"
 
 
+#### Deploying Custom Transfer Family Identity Provider (OPTIONAL)
+- NOTE: If you already have a Transfer Family server in place that you want to use, or if you don't want to use a custom IDP, you can ignore this step. However, this project does require that you have a Transfer Family server running within your AWS account, so if you don't currently have one, I'd recommend deploying this CloudFormation stack as it will create the Transfer Family server + all the required IAM policies for you.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
