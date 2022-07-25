@@ -1,0 +1,85 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:GetResourcePolicy",
+                "secretsmanager:UntagResource",
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:DescribeSecret",
+                "secretsmanager:ListSecretVersionIds",
+                "secretsmanager:TagResource"
+            ],
+            "Resource": "arn:aws:secretsmanager:us-east-1:518683422432:secret:GPG_PrivateKey-o191HJ"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:GetRandomPassword",
+                "secretsmanager:ListSecrets"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:Get*",
+                "s3:Put*",
+                "s3:List*"
+            ],
+            "Resource": "arn:aws:s3:::*"
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "transfer:TestIdentityProvider",
+                "transfer:DescribeExecution",
+                "transfer:TagResource",
+                "transfer:ListServers",
+                "transfer:ListWorkflows",
+                "transfer:SendWorkflowStepState",
+                "transfer:DescribeAccess",
+                "transfer:UntagResource",
+                "transfer:DescribeServer",
+                "transfer:DescribeUser",
+                "transfer:ListExecutions",
+                "transfer:DescribeWorkflow",
+                "transfer:DescribeSecurityPolicy",
+                "transfer:ListUsers",
+                "transfer:ListSecurityPolicies",
+                "transfer:ListAccesses",
+                "transfer:ListTagsForResource"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "logs:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}
