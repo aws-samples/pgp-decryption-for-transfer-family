@@ -89,23 +89,38 @@ _Lambda Function Execution Role_
 - Select "Workflows"
 - Select "Create Workflow"
 - Provide a brief description of the workflow (Example: Automate PGP Decryption)
+#### Step 1: Copy to Archive
 - Under "Nominal steps", select "Add step"
   - Select "Copy file"
   - Name the step (Example: copyToArchive)
   - Select destination bucket (Example: "pgp-decrypted-files")
   - For Destination key prefix, insert the following: "Archive/${transfer:UserName} 
-![image](https://user-images.githubusercontent.com/59907142/180878681-1cefbdae-9099-4eaa-93c1-6dd054272882.png)
-  
   - Select "Next" and then "Create step"
+  
+#### Step 2: Tag as Archived  
 - Under "Nominal steps", select "Add step" 
   - Select "Tag file"
   - Name the step (Example: tagAsArchived)
   - For file location, select "Tag the file created from previous step"
   - For Key enter: "Status"
-![image](https://user-images.githubusercontent.com/59907142/180879311-77ade2b8-ac39-4bf4-833d-cb5ae3ea1fa5.png)
-  
   - For Value enter: "Archived"
   - Click "Next" and the "Create step"
+
+#### Step 3: PGP Decryption
+- Under "Nominal steps", select "Add step"
+  - Select "Custom file-processing step"
+  - Name the step (Example: PGP_Decryption)
+  - For file location, select "Apply custom processing to the original source file"
+  - For target, select the Lambda function we created in earlier steps (Example: AutomatedPGPDecryption)
+  - For timeout, leave as default (60 seconds)
+  - Click "Next" and "Create step"
+
+#### Step 4: Delete Originally Uploaded File
+- Under "Nominal steps", select "Add step"
+  - Select "Delete file"
+  - Name the step (Example: Delete_Original_File)
+  - For file location, select "Delete the original source file"
+  - Click "Next" and "Create step"
 
 
 
