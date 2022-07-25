@@ -56,7 +56,7 @@ def downloadfile(bucketname, filename):
 # Function that checks if the uploaded file is encrypted or not and returns corresponding boolean.     
 def checkEncryptionStatus(filename):
     file_extension = pathlib.Path(filename).suffix
-    if (file_extension == '.asc' or file_extension == '.gpg' or file_extension = '.pgp'): 
+    if (file_extension == '.asc' or file_extension == '.gpg' or file_extension == '.pgp'): 
         print("This file is encrypted, performing decryption now.")
         return True
     else:
