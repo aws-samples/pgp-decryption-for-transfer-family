@@ -95,7 +95,17 @@ _Lambda Function Execution Role_
   - Select destination bucket (Example: "pgp-decrypted-files")
   - For Destination key prefix, insert the following: "Archive/${transfer:UserName} 
 ![image](https://user-images.githubusercontent.com/59907142/180878681-1cefbdae-9099-4eaa-93c1-6dd054272882.png)
-
+  
+  - Select "Next" and then "Create step"
+- Under "Nominal steps", select "Add step" 
+  - Select "Tag file"
+  - Name the step (Example: tagAsArchived)
+  - For file location, select "Tag the file created from previous step"
+  - For Key enter: "Status"
+![image](https://user-images.githubusercontent.com/59907142/180879311-77ade2b8-ac39-4bf4-833d-cb5ae3ea1fa5.png)
+  
+  - For Value enter: "Archived"
+  - Click "Next" and the "Create step"
 
 
 
