@@ -3,8 +3,7 @@
 ## Configuring your AWS Environment
 
 
-### Creating IAM Policies and Lambda Layer
-#### CloudShell
+#### CloudShell - Automated Creation of IAM Policies and Lambda Layer
 - Open up CloudShell within your AWS account. 
 - Run this command to download the setupEnvironment.sh script and the required IAM policies: 
   
@@ -14,8 +13,8 @@
   
   `./setupEnvironment.sh`
   
-#### IAM  
-- After running script, navigate to IAM -> Roles on the AWS Management Console. 
+#### IAM - Manual Creation of Two Required IAM Roles using AWS Console
+- After running the setupEnvironment.sh script mentioned above, navigate to IAM -> Roles within the AWS Management Console. 
 
 _Transfer Family Managed Workflow Role_
 - Click "Create Role" 
