@@ -94,7 +94,7 @@ _Lambda Function Execution Role_
   - Select "Copy file"
   - Name the step (Example: copyToArchive)
   - Select destination bucket (Example: "pgp-decrypted-files")
-  - For Destination key prefix, insert the following: "Archive/${transfer:UserName}/ 
+  - For Destination key prefix, insert the following: "Archive/${transfer:UserName}/" 
   - Select "Next" and then "Create step"
   
 #### Step 2: Tag as Archived  
