@@ -1,11 +1,10 @@
-## My Project
+## PGP Decryption for Transfer Family
 
-TODO: Fill this README out!
+### Creating IAM Policies 
+- Run bash script on this GitHub. 
+- After running script, navigate to IAM -> Roles on the AWS Management Console. 
 
-Be sure to:
 
-* Change the title in this README
-* Edit your repository description on GitHub
 
 ## Security
 
