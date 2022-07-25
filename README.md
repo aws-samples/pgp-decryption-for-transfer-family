@@ -1,7 +1,10 @@
-## PGP Decryption for Transfer Family
+# PGP Decryption for Transfer Family
 
-### Configuring your AWS Environment
-#### Creating IAM Policies and Lambda Layer
+## Configuring your AWS Environment
+
+
+### Creating IAM Policies and Lambda Layer
+#### CloudShell
 - Open up CloudShell within your AWS account. 
 - Run this command to download the setupEnvironment.sh script and the required IAM policies: 
   
@@ -11,7 +14,7 @@
   
   `./setupEnvironment.sh`
   
-  
+#### IAM  
 - After running script, navigate to IAM -> Roles on the AWS Management Console. 
 
 _Transfer Family Managed Workflow Role_
@@ -45,9 +48,31 @@ _Lambda Function Execution Role_
 
 
 
+#### Creating the Lambda Function
+- On the AWS Console, navigate to Lambda -> Functions
+- Click "Create function"
+- Select "Author from scratch"
+- Name your Lambda function (Example: AutomatedPGPDecryption)
+- Select "Python 3.8" as the Runtime
+- Select "x86_64" as the Architecture
+- Select "Change default execution role"
+  - Select "Use an existing role"
+  - Search "PGPDecryptionLambdaExecutionRole" and select it
+- Click "Create Function"
+- After creating the function, paste in the Python code from the lambdaSource.py file hosted on this GitHub.
+- Click "Deploy" to save your changes
+
+#### Attaching Layer to Lambda Function
+- Scroll to the bottom of your Lambda function and select "Add a layer"
+- Select "Custom layers"
+- Choose "python-gnupg" as the layer
+- Select whichever version is present and click "Add"
 
 
-
+#### Editing Default Lambda Timeout
+- Within your Lambda function console, select "Configuration" and then "General Configuration"
+- Click "Edit"
+- Change the timeout time from 3 seconds -> 15 seconds
 
 
 
