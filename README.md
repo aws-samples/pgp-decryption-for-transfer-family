@@ -1,7 +1,7 @@
 ## PGP Decryption for Transfer Family
 
 ### Configuring your AWS Environment
-#### Creating IAM Policies 
+#### Creating IAM Policies and Lambda Layer
 - Open up CloudShell within your AWS account. 
 - Run this command to download the setupEnvironment.sh script and the required IAM policies: 
   
@@ -12,7 +12,6 @@
   `./setupEnvironment.sh`
   
   
--  
 - After running script, navigate to IAM -> Roles on the AWS Management Console. 
 
 _Transfer Family Managed Workflow Role_
