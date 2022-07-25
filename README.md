@@ -94,7 +94,7 @@ _Lambda Function Execution Role_
   - Select "Copy file"
   - Name the step (Example: copyToArchive)
   - Select destination bucket (Example: "pgp-decrypted-files")
-  - For Destination key prefix, insert the following: "Archive/${transfer:UserName} 
+  - For Destination key prefix, insert the following: "Archive/${transfer:UserName}/ 
   - Select "Next" and then "Create step"
   
 #### Step 2: Tag as Archived  
@@ -123,9 +123,44 @@ _Lambda Function Execution Role_
   - Click "Next" and "Create step"
 
 
+#### Managed Workflow Exception Handlers
+
+#### Step 1: Copy to Failed Prefix
+- Under "Exception handlers - optional", select "Add step"
+- Select "Copy file"
+- Name the step (Example: copyToFailedPrefix)
+- Select destination bucket (Example: "pgp-decrypted-files")
+- For Destination key prefix, insert the following: "FailedDecryption/${transfer:UserName}/" 
+- Select "Next" and then "Create step"
+
+#### Step 2: Tag as Failed  
+- Under "Exception handlers - optional", select "Add step"
+  - Select "Tag file"
+  - Name the step (Example: tagAsFailed)
+  - For file location, select "Tag the file created from previous step"
+  - For Key enter: "Status"
+  - For Value enter: "Failed Decryption"
+  - Click "Next" and the "Create step"
+
+#### Step 3: Delete Originally Uploaded File
+- Under "Exception handlers - optional", select "Add step"
+  - Select "Delete file"
+  - Name the step (Example: Delete_Original_File)
+  - For file location, select "Delete the original source file"
+  - Click "Next" and "Create step"
 
 
+#### Final Step for Managed Workflow Creation
+- Select "Create Workflow"
 
+
+### Attach Managed Workflow to Transfer Family Server
+- On the Transfer Family console, select "Servers"
+- Select your desired Transfer Family server
+- Under "Additional details", select "Edit"
+- Select the newly created Workflow (Example: Automate PGP Decryption)
+- Select the newly created Managed workflow execution role (Example: PGPDecryptionManagedWorkflowRole)
+- Select "Save"
 
 
 
