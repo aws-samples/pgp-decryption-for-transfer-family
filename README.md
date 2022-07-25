@@ -89,6 +89,13 @@ _Lambda Function Execution Role_
 - Select "Workflows"
 - Select "Create Workflow"
 - Provide a brief description of the workflow (Example: Automate PGP Decryption)
+- Under "Nominal steps", select "Add step"
+  - Select "Copy file"
+  - Name the step (Example: copyToArchive)
+  - Select destination bucket (Example: "pgp-decrypted-files")
+  - For Destination key prefix, insert the following: "Archive/${transfer:UserName} 
+![image](https://user-images.githubusercontent.com/59907142/180878681-1cefbdae-9099-4eaa-93c1-6dd054272882.png)
+
 
 
 
