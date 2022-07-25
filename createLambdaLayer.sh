@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
+echo Building required IAM policies...
+wget https://github.com/aws-samples/pgp-decryption-for-transfer-family/IAM_Policies.zip
+unzip IAM_Policies.zip
+aws iam create-policy --policy-name PGPDecryptionCloudWatchPolicy --policy-document file://CloudWatchPolicy.json
+aws iam create-policy --policy-name PGPDecryptionSecretsManagerPolicy --policy-document file://secretsManagerPolicy.json
+aws iam create-policy --policy-name PGPDecryptionManagedWorkflowPolicy --policy-document file://managedWorkflowPolicy.json
+aws iam create-policy --policy-name PGPDecryptionS3Policy --policy-document file://s3Policy.json
+aws iam create-policy --policy-name PGPDecryptionTransferFamilyPolicy --policy-document file://transferFamilyPolicy.json
 echo Installing required packages...
 sudo amazon-linux-extras enable python3.8
 sudo yum install python3.8 gcc make glibc-static bzip2 pip -y
