@@ -4,6 +4,29 @@
 - Run bash script on this GitHub. 
 - After running script, navigate to IAM -> Roles on the AWS Management Console. 
 
+_Transfer Family Managed Workflow Role_
+- Click "Create Role" 
+- Select "AWS Service" and then search and select "Transfer"
+- Click "Next"
+- Select the following permissions policies:
+  - PGPDecryptionManagedWorkflowPolicy
+  - PGPDecryptionTransferFamilyPolicy
+- Click "Next"
+- Name the role (Example: PGPDecryptionManagedWorkflowRole)
+- Click "Create Role"
+
+_Lambda Function Execution Role_
+- Click "Create Role"
+- Select "AWS Service" and then select "Lambda"
+- Click "Next"
+- Select the following permissions policies:
+  - PGPDecryptionCloudWatchPolicy
+  - PGPDecryptionS3Policy
+  - PGPDecryptionSecretsManagerPolicy
+  - PGPDecryptionTransferFamilyPolicy
+- Click "Next"
+- Name the role (Example: PGPDecryptionLambdaExecutionRole)
+- Click "Create Role"
 
 
 ## Security
