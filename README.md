@@ -3,7 +3,7 @@
 ## Configuring your AWS Environment
 
 
-### CloudShell - Automated Creation of IAM Policies and Lambda Layer
+### CloudShell - Automated Creation of IAM Roles and Lambda Layer
 - Open up CloudShell within your AWS account. 
 - Run this command to download the setupEnvironment.sh script and the required IAM policies: 
   
