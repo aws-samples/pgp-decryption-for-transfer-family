@@ -9,37 +9,10 @@
   
   `wget https://github.com/aws-samples/pgp-decryption-for-transfer-family/blob/main/setupEnvironment.sh https://github.com/aws-samples/pgp-decryption-for-transfer-family/blob/main/IAM_Policies.zip`
   
-- Run this command to create the required IAM policies and Lambda layer:
+- Run this command to create the required IAM roles and Lambda layer:
   
   `./setupEnvironment.sh`
   
-### IAM - Manual Creation of Two Required IAM Roles using AWS Console
-- After running the setupEnvironment.sh script mentioned above, navigate to IAM -> Roles within the AWS Management Console. 
-
-_Transfer Family Managed Workflow Role_
-- Click "Create Role" 
-- Select "AWS Service" and then search and select "Transfer"
-- Click "Next"
-- Select the following permissions policies:
-  - PGPDecryptionManagedWorkflowPolicy
-  - PGPDecryptionTransferFamilyPolicy
-- Click "Next"
-- Name the role (Example: PGPDecryptionManagedWorkflowRole)
-- Click "Create Role"
-
-_Lambda Function Execution Role_
-- Click "Create Role"
-- Select "AWS Service" and then select "Lambda"
-- Click "Next"
-- Select the following permissions policies:
-  - PGPDecryptionCloudWatchPolicy
-  - PGPDecryptionS3Policy
-  - PGPDecryptionSecretsManagerPolicy
-  - PGPDecryptionTransferFamilyPolicy
-- Click "Next"
-- Name the role (Example: PGPDecryptionLambdaExecutionRole)
-- Click "Create Role"
-
 
 ### Deploying Custom Transfer Family Identity Provider (OPTIONAL)
 - NOTE: If you already have a Transfer Family server in place that you want to use, or if you don't want to use a custom IDP, you can ignore this step. However, this project does require that you have a Transfer Family server running within your AWS account, so if you don't currently have one, I'd recommend deploying this CloudFormation stack as it will create the Transfer Family server + all the required IAM policies for you.  
