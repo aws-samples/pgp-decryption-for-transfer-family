@@ -6,18 +6,18 @@ wget https://github.com/aws-samples/pgp-decryption-for-transfer-family/IAM_Polic
 unzip IAM_Policies.zip
 
 # IAM Role Creation
-aws iam create-role --role-name PGPDecryptionLambdaExecutionRole1 --assume-role-policy-document file://lambda-trust-policy.json
-aws iam create-role --role-name PGPDecryptionManagedWorklowRole1 --assume-role-policy-document file://transfer-trust-policy.json
+aws iam create-role --role-name PGPDecryptionLambdaExecutionRole --assume-role-policy-document file://lambda-trust-policy.json
+aws iam create-role --role-name PGPDecryptionManagedWorklowRole --assume-role-policy-document file://transfer-trust-policy.json
 
 # Attaching policies ot Lambda Execution Role
-aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole1 --policy-name PGPDecryptionCloudWatchPolicy --policy-document file://CloudWatchPolicy.json
-aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole1 --policy-name PGPDecryptionSecretsManagerPolicy --policy-document file://secretsManagerPolicy.json
-aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole1 --policy-name PGPDecryptionS3Policy --policy-document file://s3Policy.json
-aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole1 --policy-name PGPDecryptionTransferFamilyPolicy --policy-document file://transferFamilyPolicy.json
+aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole --policy-name PGPDecryptionCloudWatchPolicy --policy-document file://CloudWatchPolicy.json
+aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole --policy-name PGPDecryptionSecretsManagerPolicy --policy-document file://secretsManagerPolicy.json
+aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole --policy-name PGPDecryptionS3Policy --policy-document file://s3Policy.json
+aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole --policy-name PGPDecryptionTransferFamilyPolicy --policy-document file://transferFamilyPolicy.json
 
 # Attaching policies to Managed Workflow Execution Role
-aws iam put-role-policy --role-name PGPDecryptionManagedWorklowRole1 --policy-name PGPDecryptionManagedWorkflowPolicy --policy-document file://managedWorkflowPolicy.json
-aws iam put-role-policy --role-name PGPDecryptionManagedWorklowRole1 --policy-name PGPDecryptionTransferFamilyPolicy --policy-document file://transferFamilyPolicy.json
+aws iam put-role-policy --role-name PGPDecryptionManagedWorklowRole --policy-name PGPDecryptionManagedWorkflowPolicy --policy-document file://managedWorkflowPolicy.json
+aws iam put-role-policy --role-name PGPDecryptionManagedWorklowRole --policy-name PGPDecryptionTransferFamilyPolicy --policy-document file://transferFamilyPolicy.json
 
 # Installing required packages
 echo Installing required packages...
