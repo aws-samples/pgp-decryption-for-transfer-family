@@ -46,7 +46,7 @@
 - Change the timeout time from 3 seconds -> 15 seconds
 
 
-### S3 - Manually Creating an S3 Bucket (POSSIBLY OPTIONAL)
+### Creating an S3 Bucket (POSSIBLY OPTIONAL)
 - NOTE: This step is only optional if you already have an S3 bucket configured that you'd like to use. 
 - If not, you will need to follow these steps to create a new S3 bucket 
 - Navigate to the S3 console within the AWS console
@@ -57,7 +57,7 @@
 
 
 
-### Transfer Family - Manually Creating Transfer Family Managed Workflow
+### Creating Transfer Family Managed Workflow
 - Navigate to the Transfer Family console within the AWS console
 - Select "Workflows"
 - Select "Create Workflow"
