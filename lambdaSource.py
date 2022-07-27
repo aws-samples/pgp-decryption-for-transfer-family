@@ -14,7 +14,7 @@ s3_client = boto3.client('s3')
 s3 = boto3.resource('s3')
 transfer = boto3.client('transfer')
 # privatekeyname needs to be named whatever your GPG private key is named in Secrets Manager. 
-privatekeyname = 'GPG_PrivateKey'
+privatekeyname = 'PGP_PrivateKey'
 
 
 # Function to retrieve specified secret_value from secrets manager.     
