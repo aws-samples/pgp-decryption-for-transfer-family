@@ -118,11 +118,11 @@
 
 #### Step 1: Copy to Failed Prefix
 - Under "Exception handlers - optional", select "Add step"
-- Select "Copy file"
-- Name the step (Example: copyToFailedPrefix)
-- Select destination bucket (Example: "pgp-decrypted-files")
-- For Destination key prefix, insert the following: "FailedDecryption/${transfer:UserName}/" 
-- Select "Next" and then "Create step"
+  - Select "Copy file"
+  - Name the step (Example: copyToFailedPrefix)
+  - Select destination bucket (Example: "pgp-decrypted-files")
+  - For Destination key prefix, insert the following: "FailedDecryption/${transfer:UserName}/" 
+  - Select "Next" and then "Create step"
 
 #### Step 2: Tag as Failed  
 - Under "Exception handlers - optional", select "Add step"
