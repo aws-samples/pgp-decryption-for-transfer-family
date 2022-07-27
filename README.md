@@ -26,9 +26,9 @@
   
 
 ### Deploying Custom Transfer Family Identity Provider (OPTIONAL)
-- NOTE: If you already have a Transfer Family server in place that you want to use, or if you don't want to use a custom IDP, you can ignore this step. 
+- NOTE: If you already have a Transfer Family server in place that you want to use, or if you don't want to use a custom identity provider, you can ignore this step. 
 - However, this project does require that you have a Transfer Family server running within your AWS account, so if you don't currently have one, I'd recommend completing this step as it will create the Transfer Family server, custom identity provider, and all of the required IAM policies for you.  
-- Refer to this link for detailed instructions on deploying the Custom Transfer Family Identity Provider via CloudFormation: [https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/](url)
+- Refer to this link for detailed instructions on deploying a CloudFormation stack that will create a Transfer Family server, custom identity provider, and all the required IAM policies: [https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/](url)
 
 
 ### Creating Transfer Family Server
