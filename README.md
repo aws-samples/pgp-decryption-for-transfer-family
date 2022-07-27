@@ -19,6 +19,10 @@
 - Refer to this link for detailed instructions on deploying the Custom Transfer Family Identity Provider via CloudFormation: [https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/](url)
 
 
+### Creating Transfer Family Server
+- If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
+
+
 ### Creating the Lambda Function
 - On the AWS Console, navigate to Lambda -> Functions
 - Click "Create function"
