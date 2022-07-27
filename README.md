@@ -1,6 +1,6 @@
 # PGP Decryption for Transfer Family
 
-## Project Requirements (Step-by-Step Instructions to Create Requirements Below)
+## Project Requirements 
 ### Created by setupEnvironment.sh script
 - IAM Managed Workflow Execution Role 
 - IAM Lambda Execution Role 
@@ -12,7 +12,7 @@
 - Lambda Function for PGP Decryption
 
 
-## Configuring your AWS Environment
+## Step-by-Step Instructions to Create Requirements
 
 ### CloudShell - Automated Creation of IAM Roles and Lambda Layer
 - Open up CloudShell within your AWS account. 
