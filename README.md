@@ -5,7 +5,7 @@
 - IAM Managed Workflow Execution Role 
 - IAM Lambda Execution Role 
 - Custom Lambda Layer including required binary/python package. 
-### Must be Created Manually via AWS Console
+### Created Manually via AWS Console
 - Transfer Family Server
 - Transfer Family Managed Workflow
 - S3 Bucket
