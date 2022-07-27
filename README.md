@@ -158,7 +158,13 @@
 - Select "Store a new secret"
 - Select "Other type of secret"
 - Select "Plaintext"
-- 
+- Delete the `{"":""}` 
+- Paste in your Private Key
+- Select "Next"
+- Name your secret: PGP_PrivateKey
+- Select "Next"
+- Leave all options as default, select "Next"
+- Select "Store"
 
 
 ## Security
