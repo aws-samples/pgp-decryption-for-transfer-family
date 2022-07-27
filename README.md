@@ -153,7 +153,12 @@
 - Select the newly created Managed workflow execution role (Example: PGPDecryptionManagedWorkflowRole)
 - Select "Save"
 
-
+### Adding Private Key to Secrets Manager
+- On the AWS Console, navigate to Secrets Manager. 
+- Select "Store a new secret"
+- Select "Other type of secret"
+- Select "Plaintext"
+- 
 
 
 ## Security
