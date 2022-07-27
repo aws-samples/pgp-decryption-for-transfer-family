@@ -79,6 +79,7 @@
 - Select "Workflows"
 - Select "Create Workflow"
 - Provide a brief description of the workflow (Example: Automate PGP Decryption)
+#### Nominal Steps
 #### Step 1: Copy to Archive
 - Under "Nominal steps", select "Add step"
   - Select "Copy file"
