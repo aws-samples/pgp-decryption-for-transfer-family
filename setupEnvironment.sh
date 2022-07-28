@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Installing necessary python packages
+# Installing required Linux and Python packages
 echo Installing required packages...
 cd /home/cloudshell-user
 sudo amazon-linux-extras enable python3.8
@@ -32,6 +32,7 @@ cd /home/cloudshell-user/pgp-decryption-for-transfer-family
 
 # IAM Role Creation
 echo Creating IAM Roles...
+unzip IAM_Policies.zip
 aws iam create-role --role-name PGPDecryptionLambdaExecutionRole --assume-role-policy-document file://./lambda-trust-policy.json
 aws iam create-role --role-name PGPDecryptionManagedWorklowRole --assume-role-policy-document file://./transfer-trust-policy.json
 
