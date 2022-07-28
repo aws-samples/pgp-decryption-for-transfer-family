@@ -37,6 +37,21 @@
 - NOTE: If you already have a Transfer Family server in place that you want to use, or if you don't want to use a custom identity provider, you can ignore this step. 
 - However, this project does require that you have a Transfer Family server running within your AWS account, so if you don't currently have one, I'd recommend completing this step as it will create the Transfer Family server, custom identity provider, and all of the required IAM policies for you.  
 - Refer to this link for detailed instructions on deploying a CloudFormation stack that will create a Transfer Family server, custom identity provider, and all the required IAM policies: https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/
+- Short Summary of Steps Required: 
+  - In CloudShell, run the following: 
+    Download the CloudFormation stack using the link mentioned on the blog post linked above, at the time of creating this, the command is as follows: 
+    
+    `wget https://s3.amazonaws.com/aws-transfer-resources/custom-idp-templates/aws-transfer-custom-idp-secrets-manager-sourceip-protocol-support-apig.zip`
+
+  - After downloading the zip, unzip it: 
+    `unzip aws-transfer-custom-idp-secrets-manager-sourceip-protocol-support-apig.zip`
+    
+   - Run the following command:
+      `sam deploy --guided`
+      
+    - Enter in a stack name (Example: TransferFamilyServer)
+    - Press enter for all other options to leave them as default, refer to image for reference:
+![image](https://user-images.githubusercontent.com/59907142/181582434-2df2a594-d905-4b69-973b-2fa8880a350d.png)
 
 
 ### Creating Transfer Family Server
