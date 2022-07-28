@@ -16,9 +16,12 @@
 
 ### CloudShell - Automated Creation of IAM Roles and Lambda Layer
 - Open up CloudShell within your AWS account. 
-- Run this command to download the setupEnvironment.sh script and the required IAM policies: 
+- Run this command to clone this Git repository to access all the required files for this project: 
   
-  `wget https://github.com/aws-samples/pgp-decryption-for-transfer-family/blob/main/setupEnvironment.sh https://github.com/aws-samples/pgp-decryption-for-transfer-family/blob/main/IAM_Policies.zip`
+  `git clone https://github.com/aws-samples/pgp-decryption-for-transfer-family.git`
+  
+- Run this command to give the setupEnvironment.sh script executable permissions: 
+  `chmod +x setupEnvironment.sh`
   
 - Run this command to create the required IAM roles and Lambda layer:
   
