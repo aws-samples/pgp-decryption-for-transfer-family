@@ -21,6 +21,7 @@
   `git clone https://github.com/aws-samples/pgp-decryption-for-transfer-family.git`
   
 - Run this command to give the setupEnvironment.sh script executable permissions: 
+  
   `chmod +x setupEnvironment.sh`
   
 - Run this command to create the required IAM roles and Lambda layer:
