@@ -59,6 +59,16 @@
 - If you deployed the CloudFormation stack mentioned in the step above, you can ignore this step. 
 
 
+### Creating an S3 Bucket (POSSIBLY OPTIONAL)
+- NOTE: This step is only optional if you already have an S3 bucket configured that you'd like to use. 
+- If not, you will need to follow these steps to create a new S3 bucket 
+- Navigate to the S3 console within the AWS console
+- Click "Create bucket"
+- Name your bucket (Example: pgp-decrypted-files)
+- Leave all options as default, unless you have specific requirements to do otherwise
+- Scroll down to the bottom and select "Create bucket"
+
+
 ### Creating the Lambda Function
 - On the AWS Console, navigate to Lambda -> Functions
 - Click "Create function"
@@ -84,16 +94,6 @@
 - Within your Lambda function console, select "Configuration" and then "General Configuration"
 - Click "Edit"
 - Change the timeout time from 3 seconds -> 15 seconds
-
-
-### Creating an S3 Bucket (POSSIBLY OPTIONAL)
-- NOTE: This step is only optional if you already have an S3 bucket configured that you'd like to use. 
-- If not, you will need to follow these steps to create a new S3 bucket 
-- Navigate to the S3 console within the AWS console
-- Click "Create bucket"
-- Name your bucket (Example: pgp-decrypted-files)
-- Leave all options as default, unless you have specific requirements to do otherwise
-- Scroll down to the bottom and select "Create bucket"
 
 
 
