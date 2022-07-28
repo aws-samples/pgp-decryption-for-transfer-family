@@ -20,6 +20,10 @@
   
   `git clone https://github.com/aws-samples/pgp-decryption-for-transfer-family.git`
   
+- Change into the new pgp-decryption-for-transfer-family directory: 
+  
+  `cd pgp-decryption-for-transfer-family/`
+
 - Run this command to give the setupEnvironment.sh script executable permissions: 
   
   `chmod +x setupEnvironment.sh`
