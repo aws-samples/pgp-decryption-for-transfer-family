@@ -58,6 +58,18 @@
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
 - If you deployed the CloudFormation stack mentioned in the step above, you can ignore this step. 
 
+### Adding Private Key to Secrets Manager
+- On the AWS Console, navigate to Secrets Manager. 
+- Select "Store a new secret"
+- Select "Other type of secret"
+- Select "Plaintext"
+- Delete the `{"":""}` 
+- Paste in your Private Key
+- Select "Next"
+- Name your secret: PGP_PrivateKey
+- Select "Next"
+- Leave all options as default, select "Next"
+- Select "Store"
 
 ### Creating an S3 Bucket (POSSIBLY OPTIONAL)
 - NOTE: This step is only optional if you already have an S3 bucket configured that you'd like to use. 
@@ -106,7 +118,7 @@
 #### Step 1: Copy to Archive
 - Under "Nominal steps", select "Add step"
   - Select "Copy file"
-  - Name the step (Example: copyToArchive)
+  - Name the step (Example: CopyToArchive)
   - Select destination bucket (Example: "pgp-decrypted-files")
   - For Destination key prefix, insert the following: "Archive/${transfer:UserName}/" 
   - Select "Next" and then "Create step"
@@ -114,7 +126,7 @@
 #### Step 2: Tag as Archived  
 - Under "Nominal steps", select "Add step" 
   - Select "Tag file"
-  - Name the step (Example: tagAsArchived)
+  - Name the step (Example: TagAsArchived)
   - For file location, select "Tag the file created from previous step"
   - For Key enter: "Status"
   - For Value enter: "Archived"
@@ -123,7 +135,7 @@
 #### Step 3: PGP Decryption
 - Under "Nominal steps", select "Add step"
   - Select "Custom file-processing step"
-  - Name the step (Example: PGP_Decryption)
+  - Name the step (Example: PGPDecryption)
   - For file location, select "Apply custom processing to the original source file"
   - For target, select the Lambda function we created in earlier steps (Example: AutomatedPGPDecryption)
   - For timeout, leave as default (60 seconds)
@@ -132,7 +144,7 @@
 #### Step 4: Delete Originally Uploaded File
 - Under "Nominal steps", select "Add step"
   - Select "Delete file"
-  - Name the step (Example: Delete_Original_File)
+  - Name the step (Example: DeleteOriginalFile)
   - For file location, select "Delete the original source file"
   - Click "Next" and "Create step"
 
@@ -142,7 +154,7 @@
 #### Step 1: Copy to Failed Prefix
 - Under "Exception handlers - optional", select "Add step"
   - Select "Copy file"
-  - Name the step (Example: copyToFailedPrefix)
+  - Name the step (Example: CopyToFailedPrefix)
   - Select destination bucket (Example: "pgp-decrypted-files")
   - For Destination key prefix, insert the following: "FailedDecryption/${transfer:UserName}/" 
   - Select "Next" and then "Create step"
@@ -150,7 +162,7 @@
 #### Step 2: Tag as Failed  
 - Under "Exception handlers - optional", select "Add step"
   - Select "Tag file"
-  - Name the step (Example: tagAsFailed)
+  - Name the step (Example: TagAsFailed)
   - For file location, select "Tag the file created from previous step"
   - For Key enter: "Status"
   - For Value enter: "Failed Decryption"
@@ -159,7 +171,7 @@
 #### Step 3: Delete Originally Uploaded File
 - Under "Exception handlers - optional", select "Add step"
   - Select "Delete file"
-  - Name the step (Example: Delete_Original_File)
+  - Name the step (Example: DeleteOriginalFile)
   - For file location, select "Delete the original source file"
   - Click "Next" and "Create step"
 
@@ -175,19 +187,6 @@
 - Select the newly created Workflow (Example: Automate PGP Decryption)
 - Select the newly created Managed workflow execution role (Example: PGPDecryptionManagedWorkflowRole)
 - Select "Save"
-
-### Adding Private Key to Secrets Manager
-- On the AWS Console, navigate to Secrets Manager. 
-- Select "Store a new secret"
-- Select "Other type of secret"
-- Select "Plaintext"
-- Delete the `{"":""}` 
-- Paste in your Private Key
-- Select "Next"
-- Name your secret: PGP_PrivateKey
-- Select "Next"
-- Leave all options as default, select "Next"
-- Select "Store"
 
 
 ## Security
