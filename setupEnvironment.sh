@@ -35,7 +35,7 @@ echo Creating IAM Roles...
 aws iam create-role --role-name PGPDecryptionLambdaExecutionRole --assume-role-policy-document file://./lambda-trust-policy.json
 aws iam create-role --role-name PGPDecryptionManagedWorklowRole --assume-role-policy-document file://./transfer-trust-policy.json
 
-# Attaching policies ot Lambda Execution Role
+# Attaching policies to Lambda Execution Role
 aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole --policy-name PGPDecryptionCloudWatchPolicy --policy-document file://./CloudWatchPolicy.json
 aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole --policy-name PGPDecryptionSecretsManagerPolicy --policy-document file://./secretsManagerPolicy.json
 aws iam put-role-policy --role-name PGPDecryptionLambdaExecutionRole --policy-name PGPDecryptionS3Policy --policy-document file://./s3Policy.json
