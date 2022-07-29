@@ -14,6 +14,28 @@
 
 ## Step-by-Step Instructions to Create Requirements
 
+### Adding Private Key to Secrets Manager
+- On the AWS Console, navigate to Secrets Manager. 
+- Select "Store a new secret"
+- Select "Other type of secret"
+- Select "Plaintext"
+- Delete the `{"":""}` 
+- Paste in your Private Key
+- Select "Next"
+- Name your secret: PGP_PrivateKey
+- Select "Next"
+- Leave all options as default, select "Next"
+- Select "Store"
+
+### Creating an S3 Bucket (POSSIBLY OPTIONAL)
+- NOTE: This step is only optional if you already have an S3 bucket configured that you'd like to use. 
+- If not, you will need to follow these steps to create a new S3 bucket 
+- Navigate to the S3 console within the AWS console
+- Click "Create bucket"
+- Name your bucket (Example: pgp-decrypted-files)
+- Leave all options as default, unless you have specific requirements to do otherwise
+- Scroll down to the bottom and select "Create bucket"
+
 ### CloudShell - Automated Creation of IAM Roles and Lambda Layer
 - Open up CloudShell within your AWS account. 
 - Run this command to clone this Git repository to access all the required files for this project: 
@@ -57,28 +79,6 @@
 ### Creating Transfer Family Server
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
 - If you deployed the CloudFormation stack mentioned in the step above, you can ignore this step. 
-
-### Adding Private Key to Secrets Manager
-- On the AWS Console, navigate to Secrets Manager. 
-- Select "Store a new secret"
-- Select "Other type of secret"
-- Select "Plaintext"
-- Delete the `{"":""}` 
-- Paste in your Private Key
-- Select "Next"
-- Name your secret: PGP_PrivateKey
-- Select "Next"
-- Leave all options as default, select "Next"
-- Select "Store"
-
-### Creating an S3 Bucket (POSSIBLY OPTIONAL)
-- NOTE: This step is only optional if you already have an S3 bucket configured that you'd like to use. 
-- If not, you will need to follow these steps to create a new S3 bucket 
-- Navigate to the S3 console within the AWS console
-- Click "Create bucket"
-- Name your bucket (Example: pgp-decrypted-files)
-- Leave all options as default, unless you have specific requirements to do otherwise
-- Scroll down to the bottom and select "Create bucket"
 
 
 ### Creating the Lambda Function
