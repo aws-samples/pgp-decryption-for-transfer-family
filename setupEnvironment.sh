@@ -28,10 +28,11 @@ chmod o+x gpg
 cd ..
 zip -r lambdaLayer.zip python/
 aws lambda publish-layer-version --layer-name python-gnupg --description "Python-GNUPG Module and GPG Binary" --zip-file fileb://lambdaLayer.zip --compatible-runtimes python3.8
-cd ..
+cd /home/cloudshell-user/pgp-decryption-for-transfer-family
 
 # IAM Role Creation
 echo Creating IAM Roles...
+unzip IAM_Policies.zip
 aws iam create-role --role-name PGPDecryptionLambdaExecutionRole --assume-role-policy-document file://./lambda-trust-policy.json
 aws iam create-role --role-name PGPDecryptionManagedWorklowRole --assume-role-policy-document file://./transfer-trust-policy.json
 
