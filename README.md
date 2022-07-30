@@ -2,14 +2,15 @@
 
 ## Project Requirements 
 ### Created by setupEnvironment.sh script
-- IAM Managed Workflow Execution Role 
-- IAM Lambda Execution Role 
-- Custom Lambda Layer including required binary/python package. 
+- Custom Lambda Layer including required binary/python package.
+
+### Created via CloudFormation stack
+Stack #1: IAM Roles, Lambda Function, and S3 Bucket. 
+
 ### Created Manually via AWS Console
+- PGP Private Key Secret
 - Transfer Family Server
 - Transfer Family Managed Workflow
-- S3 Bucket
-- Lambda Function for PGP Decryption
 
 
 ## Step-by-Step Instructions to Create Requirements
@@ -27,16 +28,7 @@
 - Leave all options as default, select "Next"
 - Select "Store"
 
-### Creating an S3 Bucket (POSSIBLY OPTIONAL)
-- NOTE: This step is only optional if you already have an S3 bucket configured that you'd like to use. 
-- If not, you will need to follow these steps to create a new S3 bucket 
-- Navigate to the S3 console within the AWS console
-- Click "Create bucket"
-- Name your bucket (Example: pgp-decrypted-files)
-- Leave all options as default, unless you have specific requirements to do otherwise
-- Scroll down to the bottom and select "Create bucket"
-
-### CloudShell - Automated Creation of IAM Roles and Lambda Layer
+### CloudShell - Automated Creation of Lambda Layer
 - Open up CloudShell within your AWS account. 
 - Run this command to clone this Git repository to access all the required files for this project: 
   
@@ -53,6 +45,10 @@
 - Run this command to create the required IAM roles and Lambda layer:
   
   `./setupEnvironment.sh`
+  
+- Now, deploy the CloudFormation stack that will build out IAM roles and Lambda function: 
+  `aws cloudformation deploy --template-file ./setupEnvironment.yaml --stack-name PGPDecryptionStack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides S3BucketName=S3BUCKETNAME`
+  - Replace S3BUCKETNAME with whatever you would like to name your S3 bucket. 
   
 
 ### Creating Transfer Family Server with Custom Identity Provider (OPTIONAL)
