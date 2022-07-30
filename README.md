@@ -5,10 +5,10 @@
 - Custom Lambda Layer including required binary/python package.
 
 ### Created via CloudFormation Stack
-Setup Environment Stack - REQUIRED 
+#### Setup Environment Stack - REQUIRED 
 - IAM Roles, Lambda Function, and S3 Bucket.
 
-Custom Transfer Family Identity Provider Stack - OPTIONAL
+#### Custom Transfer Family Identity Provider Stack - OPTIONAL
 - Transfer Family Server and Custom Lambda Identity Provider.
 
 ### Created Manually via AWS Console
