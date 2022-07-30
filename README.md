@@ -44,8 +44,8 @@
 
 ### Creating Transfer Family Server 
 - NOTE: This project requires a Transfer Family server, you must choose one of these three options: 
-    - Option 1: Use an existing Transfer Family server that is already configured within your environment. 
-    - Option 2 - RECOMMENDED: Deploy a Transfer Family server with a custom Secrets Manager based identity provider via CloudFormation stack.
+    - Option 1: Deploy a Transfer Family server with a custom Secrets Manager based identity provider via CloudFormation stack.
+    - Option 2: Use an existing Transfer Family server that is already configured within your environment. 
     - Option 3: Manually create your own Transfer Family server / Transfer Family managed user via the AWS Console. 
   
 #### Option 1: Using an existing Transfer Family Server
