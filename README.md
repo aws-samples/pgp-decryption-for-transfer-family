@@ -7,6 +7,7 @@
 ### Created via CloudFormation Stack
 Setup Environment Stack - REQUIRED 
 - IAM Roles, Lambda Function, and S3 Bucket.
+
 Custom Transfer Family Identity Provider Stack - OPTIONAL
 - Transfer Family Server and Custom Lambda Identity Provider.
 
