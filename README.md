@@ -47,6 +47,7 @@ Stack #1: IAM Roles, Lambda Function, and S3 Bucket.
   `./setupEnvironment.sh`
   
 - Now, deploy the CloudFormation stack that will build out IAM roles and Lambda function: 
+  
   `aws cloudformation deploy --template-file ./setupEnvironment.yaml --stack-name PGPDecryptionStack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides S3BucketName=S3BUCKETNAME`
   - Replace S3BUCKETNAME with whatever you would like to name your S3 bucket. 
   
