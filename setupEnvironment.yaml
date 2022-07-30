@@ -33,7 +33,9 @@ Resources:
                 - 's3:GetObjectVersion'
                 - 's3:PutObjectTagging'
                 - 's3:PutObjectVersionTagging'
-              Resource: 'arn:aws:s3:::*'
+              Resource:
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '/*']]
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
             - Effect: Allow
               Action:
                 - 'lambda:InvokeFunction'
@@ -84,8 +86,9 @@ Resources:
                 - 's3:Put*'
                 - 's3:List*'
                 - 's3:Delete*'
-              Resource: 'arn:aws:s3:::*'
-              #Should be able to do a ref like !Ref S3Bucket
+              Resource:
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '/*']]
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
       RoleName: PGPDecryptionTransferFamilyUserRole
 
   PGPDecryptionLambdaExecutionRole:
@@ -124,7 +127,9 @@ Resources:
                 - 's3:Put*'
                 - 's3:List*'
                 - 's3:Delete*'
-              Resource: 'arn:aws:s3:::*'
+              Resource: 
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '/*']]
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
             - Effect: Allow
               Action:
                 - "transfer:TestIdentityProvider"
@@ -152,14 +157,14 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Description: "Function responsible for performing PGP decryption process."
-      FunctionName: AutomatedPGPDecryptionTest
+      FunctionName: AutomatedPGPDecryption
       Architectures: 
         - "x86_64"
       Runtime: python3.8
       MemorySize: 256
       Timeout: 15
       Layers: 
-        - !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:python-gnupg:26"
+        - !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:PGPDecryptionLayer:1"
       EphemeralStorage: 
             Size: 512  
       Role: !GetAtt PGPDecryptionLambdaExecutionRole.Arn
