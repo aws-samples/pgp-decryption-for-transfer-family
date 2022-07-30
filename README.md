@@ -13,7 +13,6 @@
 
 ### Created Manually via AWS Console
 - PGP Private Key Secret
-- Transfer Family Server
 - Transfer Family Managed Workflow
 
 
