@@ -77,7 +77,6 @@
   - Refer to image for reference: 
 ![image](https://user-images.githubusercontent.com/59907142/182002223-f2d9ac4b-f15f-4dbf-b471-af6ef7b83a8e.png)
 
-arn:aws:iam::518683422432:role/PGPDecryptionTransferFamilyUserRole
 
 #### Option 3: Manually Creating Transfer Family Server via AWS Console
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
