@@ -71,7 +71,13 @@
   - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
-  - Save the secret in the following format: serverid/username
+    - Secret Key: Password || Secret Value: TestPassword1234!
+    - Secret Key: Role || Secret Value: arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole
+    - Secret Key: HomeDirectory || Secret Value: /S3-BUCKET-NAME/
+  - Refer to image for reference: 
+![image](https://user-images.githubusercontent.com/59907142/182002223-f2d9ac4b-f15f-4dbf-b471-af6ef7b83a8e.png)
+
+arn:aws:iam::518683422432:role/PGPDecryptionTransferFamilyUserRole
 
 #### Option 3: Manually Creating Transfer Family Server via AWS Console
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
