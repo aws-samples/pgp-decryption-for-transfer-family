@@ -4,8 +4,11 @@
 ### Created by setupEnvironment.sh script
 - Custom Lambda Layer including required binary/python package.
 
-### Created via CloudFormation stack
-Stack #1: IAM Roles, Lambda Function, and S3 Bucket. 
+### Created via CloudFormation Stack
+Setup Environment Stack - REQUIRED 
+- IAM Roles, Lambda Function, and S3 Bucket.
+Custom Transfer Family Identity Provider Stack - OPTIONAL
+- Transfer Family Server and Custom Lambda Identity Provider.
 
 ### Created Manually via AWS Console
 - PGP Private Key Secret
