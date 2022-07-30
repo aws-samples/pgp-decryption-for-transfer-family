@@ -49,7 +49,7 @@
 #### Option 1: Using an existing Transfer Family Server
 - No configuration needed at this time, proceed to next step of creating PGP Private Key secret within Secrets Manager.  
 
-#### Option 2: Creating Transfer Family Server with Custom Identity Provider
+#### Option 2: Deploying CloudFormation Stack to Create Transfer Family Server with Custom Identity Provider
 - Refer to this link for detailed instructions on deploying a CloudFormation stack that will create a Transfer Family server, custom identity provider, and all the required IAM policies: https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/
 - Short Summary of Steps Required: 
   - In CloudShell, run the following: 
@@ -67,10 +67,9 @@
     - Press enter for all other options to leave them as default, refer to image for reference:
 ![image](https://user-images.githubusercontent.com/59907142/181582434-2df2a594-d905-4b69-973b-2fa8880a350d.png)
 
-
-### Creating Transfer Family Server
+#### Option 3: Manually Creating Transfer Family Server via AWS Console
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
-- If you deployed the CloudFormation stack mentioned in the step above, you can ignore this step. 
+
 
 ### Adding Private Key to Secrets Manager
 - On the AWS Console, navigate to Secrets Manager. 
