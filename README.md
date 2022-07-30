@@ -15,19 +15,6 @@ Stack #1: IAM Roles, Lambda Function, and S3 Bucket.
 
 ## Step-by-Step Instructions to Create Requirements
 
-### Adding Private Key to Secrets Manager
-- On the AWS Console, navigate to Secrets Manager. 
-- Select "Store a new secret"
-- Select "Other type of secret"
-- Select "Plaintext"
-- Delete the `{"":""}` 
-- Paste in your Private Key
-- Select "Next"
-- Name your secret: PGP_PrivateKey
-- Select "Next"
-- Leave all options as default, select "Next"
-- Select "Store"
-
 ### CloudShell - Automated Creation of Lambda Layer
 - Open up CloudShell within your AWS account. 
 - Run this command to clone this Git repository to access all the required files for this project: 
@@ -77,34 +64,18 @@ Stack #1: IAM Roles, Lambda Function, and S3 Bucket.
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
 - If you deployed the CloudFormation stack mentioned in the step above, you can ignore this step. 
 
-
-### Creating the Lambda Function
-- On the AWS Console, navigate to Lambda -> Functions
-- Click "Create function"
-- Select "Author from scratch"
-- Name your Lambda function (Example: AutomatedPGPDecryption)
-- Select "Python 3.8" as the Runtime
-- Select "x86_64" as the Architecture
-- Select "Change default execution role"
-  - Select "Use an existing role"
-  - Search "PGPDecryptionLambdaExecutionRole" and select it
-- Click "Create Function"
-- After creating the function, paste in the Python code from the lambdaSource.py file hosted on this GitHub.
-- Click "Deploy" to save your changes
-
-#### Attaching Layer to Lambda Function
-- Scroll to the bottom of your Lambda function and select "Add a layer"
-- Select "Custom layers"
-- Choose "python-gnupg" as the layer
-- Select whichever version is present and click "Add"
-
-
-#### Editing Default Lambda Timeout
-- Within your Lambda function console, select "Configuration" and then "General Configuration"
-- Click "Edit"
-- Change the timeout time from 3 seconds -> 15 seconds
-
-
+### Adding Private Key to Secrets Manager
+- On the AWS Console, navigate to Secrets Manager. 
+- Select "Store a new secret"
+- Select "Other type of secret"
+- Select "Plaintext"
+- Delete the `{"":""}` 
+- Paste in your Private Key
+- Select "Next"
+- Name your secret: PGP_PrivateKey
+- Select "Next"
+- Leave all options as default, select "Next"
+- Select "Store"**
 
 ### Creating Transfer Family Managed Workflow
 - Navigate to the Transfer Family console within the AWS console
