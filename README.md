@@ -78,7 +78,7 @@
     
    - Run the following command:
   
-    `sam deploy --guided`
+      `sam deploy --guided`
       
     - Enter in a stack name (Example: TransferFamilyServer)
     - Press enter for all other options to leave them as default, refer to image for reference:
