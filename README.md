@@ -16,8 +16,7 @@
 ### Overview of Process
 1. Open up CloudShell and clone this GitHub repository. 
 2. Run setupEnvironment.sh bash script. 
-3. Deploy setupEnvironment.yaml CloudFormation stack.
-  - Creates necessary IAM Roles, Lambda Function, and S3 Bucket.
+3. Deploy setupEnvironment.yaml CloudFormation stack which creates necessary IAM Roles, Lambda Function, and S3 Bucket.
 4. Create a Transfer Family Server / Transfer Family User. (Must pick one of the following options)
     - Option 1: Deploy a Transfer Family server with a custom Secrets Manager based identity provider via CloudFormation stack.
     - Option 2: Use an existing Transfer Family server that is already configured within your environment. 
