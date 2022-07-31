@@ -71,6 +71,8 @@
       
     - Enter in a stack name (Example: TransferFamilyServer)
     - Press enter for all other options to leave them as default, refer to image for reference:
+
+
 ![image](https://user-images.githubusercontent.com/59907142/181582434-2df2a594-d905-4b69-973b-2fa8880a350d.png)
 
 ##### Creating Custom Transfer Family Identity Provider User Account
