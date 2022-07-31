@@ -1,10 +1,10 @@
 # PGP Decryption for Transfer Family
 
 ## Project Requirements 
-### Created by setupEnvironment.sh script
+### Steps Completed by setupEnvironment.sh script
 - Custom Lambda Layer including required binary/python package.
 
-### Created via CloudFormation Stack
+### Steps Completed by CloudFormation Stack
 - REQUIRED - Setup Environment Stack: Creates necessary IAM Roles, Lambda Function, and S3 Bucket.
 
 - OPTIONAL - Custom Transfer Family Identity Provider Stack: Creates a Transfer Family server with a custom Lambda identity provider.
