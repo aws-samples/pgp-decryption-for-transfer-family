@@ -53,7 +53,7 @@
 ![image](https://user-images.githubusercontent.com/59907142/182047958-f00431bc-6ede-45d4-a79c-cd847cab82b6.png)
 
   
-- After the stack creation process completes, run this command and document the ARN, and S3 bucket name: (Will be required for Custom Transfer Family IDP user creation)
+- After the stack creation process completes, run this command and document the ARN, and S3 bucket name: (Required for Custom Transfer Family IDP user creation)
   
   `aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" > values.txt`
   
