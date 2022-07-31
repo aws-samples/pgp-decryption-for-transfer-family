@@ -37,7 +37,10 @@
 - Now, deploy the CloudFormation stack that will build out IAM roles and Lambda function: 
   
   `aws cloudformation deploy --template-file ./setupEnvironment.yaml --stack-name PGPDecryptionStack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides S3BucketName=S3BUCKETNAME`
-  - Replace S3BUCKETNAME with whatever you would like to name your S3 bucket. 
+  - Replace S3BUCKETNAME with whatever you would like to name your S3 bucket.
+
+![image](https://user-images.githubusercontent.com/59907142/182047902-9d0c995c-a6b7-48e4-a701-319fb028c09b.png)
+
   
 - After the stack creation process completes, run this command and document the ARN, and S3 bucket name: (Will be required for Custom Transfer Family IDP user creation)
   
@@ -47,7 +50,7 @@
   
     `cat values.txt`
   
-![image](https://user-images.githubusercontent.com/59907142/182047307-8a93339b-b790-48fa-96dc-447c3f5d188c.png)
+![image](https://user-images.githubusercontent.com/59907142/182047911-32e03149-6e3b-4bc5-bf97-6a234bfddc78.png)
 
 
 
