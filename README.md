@@ -43,7 +43,8 @@
   
   `aws cloudformation describe-stacks | grep -A 5 -B 10 "Transfer Family User Arn:"`
   
-![image](https://user-images.githubusercontent.com/59907142/182047100-8bce3e67-f81d-4194-8b1d-d59e2acc87f4.png)
+![image](https://user-images.githubusercontent.com/59907142/182047146-db15531b-67ae-4638-9fce-0784e46e1f46.png)
+
 
 
 ### Creating Transfer Family Server 
