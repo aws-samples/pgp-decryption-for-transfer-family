@@ -16,7 +16,7 @@
 
 ## Step-by-Step Instructions to Create Requirements
 
-### CloudShell - Deploying setupEnvironment bash script and CloudFormation stack. 
+### CloudShell - Deploying setupEnvironment bash script and CloudFormation stacks. 
 - Open up CloudShell within your AWS account. 
 - Run this command to clone this Git repository to access all the required files for this project: 
   
