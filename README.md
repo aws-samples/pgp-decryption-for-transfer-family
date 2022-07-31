@@ -9,9 +9,9 @@
 
 - OPTIONAL - Custom Transfer Family Identity Provider Stack: Creates a Transfer Family server with a custom Lambda identity provider.
 
-### Created Manually via AWS Console
-- PGP Private Key Secret
-- Transfer Family Managed Workflow
+### Steps Completed Manually via AWS Console
+- Paste PGP Private Key into PGP_PrivateKey secret within Secrets Manager console. 
+- Attach Transfer Family Managed Workflow to Transfer Family server within Transfer Family console. 
 
 
 ## Step-by-Step Instructions to Create Requirements
