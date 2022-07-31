@@ -43,7 +43,8 @@
   
   `aws cloudformation describe-stacks | grep -A 5 -B 10 "Transfer Family User Arn:"`
   
-![image](https://user-images.githubusercontent.com/59907142/182047146-db15531b-67ae-4638-9fce-0784e46e1f46.png)
+![image](https://user-images.githubusercontent.com/59907142/182047288-eee526c1-3e60-4f7c-8e36-22e5cb88b34a.png)
+
 
 
 
