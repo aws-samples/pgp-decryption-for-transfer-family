@@ -7,89 +7,12 @@ Parameters:
     Description: Name for S3 bucket to store files uploaded to AWS via the Transfer Family. 
 
 Resources:
-  PGPDecryptionManagedWorklowRole:
-    Type: AWS::IAM::Role
+  PGPPrivateKeyTest:
+    Type: 'AWS::SecretsManager::Secret'
     Properties:
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - transfer.amazonaws.com
-            Action:
-              - 'sts:AssumeRole'
-      Description: Role to provide access to PGP Decryption Managed Workflow
-      Policies:
-        - PolicyName: EmbeddedInlinePolicy
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-            - Effect: Allow
-              Action:
-                - 's3:GetBucketLocation'
-                - 's3:ListBucket'
-                - 's3:*Object'
-                - 's3:GetObjectVersion'
-                - 's3:PutObjectTagging'
-                - 's3:PutObjectVersionTagging'
-              Resource:
-                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '/*']]
-                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
-            - Effect: Allow
-              Action:
-                - 'lambda:InvokeFunction'
-              Resource: 'arn:aws:lambda:*:*:function:*'
-            - Effect: Allow
-              Action:
-                - "transfer:TestIdentityProvider"
-                - "transfer:DescribeExecution"
-                - "transfer:TagResource"
-                - "transfer:ListServers"
-                - "transfer:ListWorkflows"
-                - "transfer:SendWorkflowStepState"
-                - "transfer:DescribeAccess"
-                - "transfer:UntagResource"
-                - "transfer:DescribeServer"
-                - "transfer:DescribeUser"
-                - "transfer:ListExecutions"
-                - "transfer:DescribeWorkflow"
-                - "transfer:DescribeSecurityPolicy"
-                - "transfer:ListUsers"
-                - "transfer:ListSecurityPolicies"
-                - "transfer:ListAccesses"
-                - "transfer:ListTagsForResource"
-              Resource: 'arn:aws:transfer:*:*:*/*'
-      RoleName: PGPDecryptionManagedWorklowRole
-
-  PGPDecryptionTransferFamilyUserRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: "2012-10-17"
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service:
-                - transfer.amazonaws.com
-            Action:
-              - 'sts:AssumeRole'
-      Description: Role to provide access to PGP Decryption Transfer Family User Role
-      Policies:
-        - PolicyName: EmbeddedInlinePolicy
-          PolicyDocument:
-            Version: "2012-10-17"
-            Statement:
-            - Effect: Allow
-              Action:
-                - 's3:Get*'
-                - 's3:Put*'
-                - 's3:List*'
-                - 's3:Delete*'
-              Resource:
-                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '/*']]
-                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
-      RoleName: PGPDecryptionTransferFamilyUserRole
+      Name: PGP_PrivateKeyTest
+      Description: Private key used for PGP decryption.
+      SecretString: 'Within the Secrets Manager console, paste your PGP private key here'
 
   PGPDecryptionLambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -111,15 +34,12 @@ Resources:
             Statement:
             - Effect: Allow
               Action:
-                - 'logs:*'
-                - 'secretsmanager:GetResourcePolicy'
-                - 'secretsmanager:UntagResource'
                 - 'secretsmanager:GetSecretValue'
                 - 'secretsmanager:DescribeSecret'
-                - 'secretsmanager:ListSecretVersionIds'
-                - 'secretsmanager:TagResource'
-                - 'secretsmanager:GetRandomPassword'
-                - 'secretsmanager:ListSecrets'
+              Resource: !Ref PGPPrivateKeyTest
+            - Effect: Allow
+              Action:
+                - 'logs:*'
               Resource: '*'
             - Effect: Allow
               Action:
@@ -132,23 +52,7 @@ Resources:
                 - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
             - Effect: Allow
               Action:
-                - "transfer:TestIdentityProvider"
-                - "transfer:DescribeExecution"
-                - "transfer:TagResource"
-                - "transfer:ListServers"
-                - "transfer:ListWorkflows"
                 - "transfer:SendWorkflowStepState"
-                - "transfer:DescribeAccess"
-                - "transfer:UntagResource"
-                - "transfer:DescribeServer"
-                - "transfer:DescribeUser"
-                - "transfer:ListExecutions"
-                - "transfer:DescribeWorkflow"
-                - "transfer:DescribeSecurityPolicy"
-                - "transfer:ListUsers"
-                - "transfer:ListSecurityPolicies"
-                - "transfer:ListAccesses"
-                - "transfer:ListTagsForResource"
               Resource: 'arn:aws:transfer:*:*:*/*'
       RoleName: PGPDecryptionLambdaExecutionRole
 
@@ -187,7 +91,7 @@ Resources:
           s3 = boto3.resource('s3')
           transfer = boto3.client('transfer')
           # privatekeyname needs to be named whatever your GPG private key is named in Secrets Manager. 
-          privatekeyname = 'PGP_PrivateKey'
+          privatekeyname = 'PGP_PrivateKeyTest'
 
 
           # Function to retrieve specified secret_value from secrets manager.     
@@ -327,11 +231,146 @@ Resources:
       TracingConfig:
         Mode: PassThrough
 
+
+
+  PGPDecryptionManagedWorklowRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - transfer.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: Role to provide access to PGP Decryption Managed Workflow
+      Policies:
+        - PolicyName: EmbeddedInlinePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - 's3:GetBucketLocation'
+                - 's3:ListBucket'
+                - 's3:*Object'
+                - 's3:GetObjectVersion'
+                - 's3:PutObjectTagging'
+                - 's3:PutObjectVersionTagging'
+              Resource:
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '/*']]
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
+            - Effect: Allow
+              Action:
+                - 's3:GetBucketLocation'
+              Resource: '*'
+            - Effect: Allow
+              Action:
+                - 'lambda:InvokeFunction'
+              Resource: !GetAtt LambdaFunction.Arn
+            - Effect: Allow
+              Action:
+                - "transfer:SendWorkflowStepState"
+              Resource: 'arn:aws:transfer:*:*:*/*'
+      RoleName: PGPDecryptionManagedWorklowRole
+
+  PGPDecryptionTransferFamilyUserRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - transfer.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: Role to provide access to PGP Decryption Transfer Family User Role
+      Policies:
+        - PolicyName: EmbeddedInlinePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - s3:ListBucket
+                - s3:PutObject
+                - s3:GetObject
+                - s3:DeleteObject
+                - s3:DeleteObjectVersion
+                - s3:GetObjectVersion
+              Resource:
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '/*']]
+                - !Join [ '', ['arn:aws:s3:::', !Ref S3BucketName, '*']]
+      RoleName: PGPDecryptionTransferFamilyUserRole
+
+  
+
   S3Bucket:
     Type: "AWS::S3::Bucket"
     Properties:
         BucketName: !Ref S3BucketName
 
+
+  PGPDecryptionTransferWorkflow:
+    Type: AWS::Transfer::Workflow
+    Properties:
+      Description: Transfer Family Workflow for PGP decryption process
+      Steps:
+        - Type: COPY
+          CopyStepDetails:
+            Name: CopyToArchive
+            DestinationFileLocation:
+              S3FileLocation:
+                Bucket: !Ref S3BucketName
+                Key: Archive/${transfer:UserName}/
+            OverwriteExisting: 'FALSE'
+        - Type: TAG
+          TagStepDetails:
+            Name: TagFileForArchive
+            Tags:
+              - Key: status
+                Value: archived
+        - Type: CUSTOM
+          CustomStepDetails:
+            Name: PGPDecryption
+            Target: !GetAtt LambdaFunction.Arn
+            TimeoutSeconds: 60
+            SourceFileLocation: '${original.file}'
+        - Type: DELETE
+          DeleteStepDetails:
+            Name: DeleteOriginalFile
+            SourceFileLocation: '${original.file}'
+      OnExceptionSteps:
+        - Type: COPY
+          CopyStepDetails:
+            Name: CopyToFailedDecryptionPrefix
+            DestinationFileLocation:
+              S3FileLocation:
+                Bucket: !Ref S3BucketName
+                Key: FailedDecryption/${transfer:UserName}/
+        - Type: TAG
+          TagStepDetails:
+            Name: TagFailedDecryption
+            Tags:
+              - Key: status
+                Value: failed-decryption
+        - Type: DELETE
+          DeleteStepDetails:
+            Name: DeleteOriginalFile
+            SourceFileLocation: '${original.file}'
+
+
+Outputs:
+  RoleArn:
+    Description: "Transfer Family User Arn:"
+    Value: !GetAtt PGPDecryptionTransferFamilyUserRole.Arn
+  S3Bucket:
+    Description: "Name of S3 Bucket:"
+    Value: !Ref S3BucketName
 
 
 
