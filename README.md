@@ -90,7 +90,9 @@
   - Create the following key-value pairs. The key names are case-sensitive.
     - Secret Key: Password || Secret Value: TestPassword1234!
     - Secret Key: Role || Secret Value: arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole
+      - Refer to the values.txt file created earlier for the exact ARN required. 
     - Secret Key: HomeDirectory || Secret Value: /S3-BUCKET-NAME/
+      - Refer to the values.txt file created earlier for the exact S3 bucket name required. 
   - Refer to image for reference: 
 ![image](https://user-images.githubusercontent.com/59907142/182002223-f2d9ac4b-f15f-4dbf-b471-af6ef7b83a8e.png)
 
