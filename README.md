@@ -84,7 +84,7 @@
 
 ![image](https://user-images.githubusercontent.com/59907142/181582434-2df2a594-d905-4b69-973b-2fa8880a350d.png)
 
-##### Option 2 Continued: Creating Custom Transfer Family Identity Provider User Account
+##### Option 1 Continued: Creating Custom Transfer Family Identity Provider User Account
   - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
@@ -98,7 +98,7 @@
 ![image](https://user-images.githubusercontent.com/59907142/182048535-da4463c1-4221-40dd-bd01-5b5f13ee1389.png)
 
 #### Option 2: Using an existing Transfer Family Server
-- No configuration needed at this time, proceed to next step of creating PGP Private Key secret within Secrets Manager.  
+- No configuration needed at this time, proceed to next step of pasting your PGP Private Key into the PGP_PrivateKey secret within Secrets Manager.  
 
 #### Option 3: Manually Creating Transfer Family Server via AWS Console
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server + Transfer Family managed user: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
