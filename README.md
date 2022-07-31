@@ -94,6 +94,7 @@
     - Secret Key: HomeDirectory || Secret Value: /S3-BUCKET-NAME/
       - Refer to the values.txt file created earlier in CloudShell for the exact S3 bucket name required. 
   - Refer to image for reference: 
+
 ![image](https://user-images.githubusercontent.com/59907142/182048535-da4463c1-4221-40dd-bd01-5b5f13ee1389.png)
 
 
