@@ -120,8 +120,8 @@
 - On the Transfer Family console, select "Servers"
 - Select your desired Transfer Family server
 - Under "Additional details", select "Edit"
-- Select the newly created Workflow (Example: Automate PGP Decryption)
-- Select the newly created Managed workflow execution role (Example: PGPDecryptionManagedWorkflowRole)
+- Select the Workflow with the description: "Transfer Family Workflow for PGP decryption process"
+- Select the Managed workflow execution role with the name: "PGPDecryptionManagedWorkflowRole"
 - Select "Save"
 
 
