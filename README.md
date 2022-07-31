@@ -13,6 +13,18 @@
 - Paste PGP Private Key into PGP_PrivateKey secret within Secrets Manager console. 
 - Attach Transfer Family Managed Workflow to Transfer Family server within Transfer Family console. 
 
+### Overview of Process
+1. Open up CloudShell and clone this GitHub repository. 
+2. Run setupEnvironment.sh bash script. 
+3. Deploy setupEnvironment.yaml CloudFormation stack.
+  - Creates necessary IAM Roles, Lambda Function, and S3 Bucket.
+4. Create a Transfer Family Server / Transfer Family User. (Must pick one of the following options)
+    - Option 1: Deploy a Transfer Family server with a custom Secrets Manager based identity provider via CloudFormation stack.
+    - Option 2: Use an existing Transfer Family server that is already configured within your environment. 
+    - Option 3: Manually create your own Transfer Family server / Transfer Family managed user via the AWS Console. 
+5. Add your PGP Private Key in Secrets Manager. 
+6. Attach Transfer Family Managed Workflow to Transfer Family server. 
+
 
 ## Step-by-Step Instructions to Create Requirements
 
@@ -84,7 +96,7 @@
 
 ![image](https://user-images.githubusercontent.com/59907142/181582434-2df2a594-d905-4b69-973b-2fa8880a350d.png)
 
-##### Option 1 Continued: Creating Custom Transfer Family Identity Provider User Account
+##### Option 1 Continued: Create Custom Transfer Family Identity Provider User Account
   - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
@@ -97,10 +109,10 @@
 
 ![image](https://user-images.githubusercontent.com/59907142/182048535-da4463c1-4221-40dd-bd01-5b5f13ee1389.png)
 
-#### Option 2: Using an existing Transfer Family Server
+#### Option 2: Use an existing Transfer Family Server
 - No configuration needed at this time, proceed to next step of pasting your PGP Private Key into the PGP_PrivateKey secret within Secrets Manager.  
 
-#### Option 3: Manually Creating Transfer Family Server via AWS Console
+#### Option 3: Manually Create a Transfer Family Server via AWS Console
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server + Transfer Family managed user: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
 
 
