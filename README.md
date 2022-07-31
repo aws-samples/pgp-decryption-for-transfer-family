@@ -94,7 +94,7 @@
     - Secret Key: HomeDirectory || Secret Value: /S3-BUCKET-NAME/
       - Refer to the values.txt file created earlier in CloudShell for the exact S3 bucket name required. 
   - Refer to image for reference: 
-![image](https://user-images.githubusercontent.com/59907142/182002223-f2d9ac4b-f15f-4dbf-b471-af6ef7b83a8e.png)
+![image](https://user-images.githubusercontent.com/59907142/182048535-da4463c1-4221-40dd-bd01-5b5f13ee1389.png)
 
 
 #### Option 3: Manually Creating Transfer Family Server via AWS Console
