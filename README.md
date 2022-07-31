@@ -25,7 +25,7 @@
 6. Attach Transfer Family Managed Workflow to Transfer Family server. 
 
 
-## Step-by-Step Instructions to Create Requirements
+## Step-by-Step Instructions
 
 ### CloudShell - Deploying setupEnvironment bash script and CloudFormation stacks. 
 - Open up CloudShell within your AWS account. 
