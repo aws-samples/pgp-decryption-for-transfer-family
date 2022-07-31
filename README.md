@@ -41,7 +41,11 @@
   
 - After the stack creation process completes, run this command and document the ARN, and S3 bucket name: (Will be required for Custom Transfer Family IDP user creation)
   
-  `aws cloudformation describe-stacks | grep -A 5 -B 10 "Transfer Family User Arn:"`
+  `aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" > values.txt`
+  
+  - To access the required ARN / S3 Bucket name needed for Custom Transfer Family IDP user creation, run this command: 
+  
+  `cat values.txt`
   
 ![image](https://user-images.githubusercontent.com/59907142/182047307-8a93339b-b790-48fa-96dc-447c3f5d188c.png)
 
