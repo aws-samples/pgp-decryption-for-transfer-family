@@ -1,4 +1,6 @@
-***NOTE: This exact Transfer Family Managed Workflow is created by deploying the setupEnvironment.yaml CloudFormation stack. These instructions are simply here for reference of how you could create this Managed Workflow manually via the AWS console. ***
+***********************************************************************************************************************************************************************
+NOTE: This exact Transfer Family Managed Workflow is created by deploying the setupEnvironment.yaml CloudFormation stack. These instructions are simply here for reference of how you could create this Managed Workflow manually via the AWS console. 
+***********************************************************************************************************************************************************************
 
 ### Creating Transfer Family Managed Workflow
 - Navigate to the Transfer Family console within the AWS console
