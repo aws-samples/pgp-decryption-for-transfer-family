@@ -108,10 +108,10 @@
 
 ![image](https://user-images.githubusercontent.com/59907142/182048535-da4463c1-4221-40dd-bd01-5b5f13ee1389.png)
 
-#### Option 2: Use an existing Transfer Family Server
+#### Option 2: Use an existing Transfer Family Server + Transfer Family User Account
 - No configuration needed at this time, proceed to next step of pasting your PGP Private Key into the PGP_PrivateKey secret within Secrets Manager.  
 
-#### Option 3: Manually Create a Transfer Family Server via AWS Console
+#### Option 3: Manually Create a Transfer Family Server + Transfer Family User Account via AWS Console
 - If you don't want to deploy the custom Transfer Family identity provider via CloudFormation mentioned in the above step, and don't have a currently up and running Transfer Family server, please refer to this link for instructions on how to create a new Transfer Family server + Transfer Family managed user: https://docs.aws.amazon.com/transfer/latest/userguide/getting-started.html
 
 
