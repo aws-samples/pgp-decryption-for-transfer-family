@@ -73,10 +73,12 @@
     `wget https://s3.amazonaws.com/aws-transfer-resources/custom-idp-templates/aws-transfer-custom-idp-secrets-manager-sourceip-protocol-support-apig.zip`
 
   - After downloading the zip, unzip it: 
+  
     `unzip aws-transfer-custom-idp-secrets-manager-sourceip-protocol-support-apig.zip`
     
    - Run the following command:
-      `sam deploy --guided`
+  
+    `sam deploy --guided`
       
     - Enter in a stack name (Example: TransferFamilyServer)
     - Press enter for all other options to leave them as default, refer to image for reference:
