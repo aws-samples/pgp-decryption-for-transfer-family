@@ -39,7 +39,7 @@
   `aws cloudformation deploy --template-file ./setupEnvironment.yaml --stack-name PGPDecryptionStack --capabilities CAPABILITY_NAMED_IAM --parameter-overrides S3BucketName=S3BUCKETNAME`
   - Replace S3BUCKETNAME with whatever you would like to name your S3 bucket.
 
-![image](https://user-images.githubusercontent.com/59907142/182047902-9d0c995c-a6b7-48e4-a701-319fb028c09b.png)
+![image](https://user-images.githubusercontent.com/59907142/182047958-f00431bc-6ede-45d4-a79c-cd847cab82b6.png)
 
   
 - After the stack creation process completes, run this command and document the ARN, and S3 bucket name: (Will be required for Custom Transfer Family IDP user creation)
