@@ -45,7 +45,7 @@
   
   - To access the required ARN / S3 Bucket name needed for Custom Transfer Family IDP user creation, run this command: 
   
-  `cat values.txt`
+    `cat values.txt`
   
 ![image](https://user-images.githubusercontent.com/59907142/182047307-8a93339b-b790-48fa-96dc-447c3f5d188c.png)
 
