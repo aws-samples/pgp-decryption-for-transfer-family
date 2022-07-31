@@ -100,17 +100,15 @@
 
 
 ### Adding Private Key to Secrets Manager
-- On the AWS Console, navigate to Secrets Manager. 
-- Select "Store a new secret"
-- Select "Other type of secret"
-- Select "Plaintext"
-- Delete the `{"":""}` 
-- Paste in your Private Key
-- Select "Next"
-- Name your secret: PGP_PrivateKey
-- Select "Next"
-- Leave all options as default, select "Next"
-- Select "Store"**
+- Navigate to the AWS Secrets Manager console: https://console.aws.amazon.com/secretsmanager 
+- Select "Secrets"
+- Select the secret named: "PGP_PrivateKey"
+- Select "Retrieve secret value"
+- Select "Edit"
+- Remove the text: "Within the Secrets Manager console, paste your PGP private key here"
+- Paste in your PGP Private key
+- Select "Save"
+
 
 ### Creating Transfer Family Managed Workflow
 - Navigate to the Transfer Family console within the AWS console
