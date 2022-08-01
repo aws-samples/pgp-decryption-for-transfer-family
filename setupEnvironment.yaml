@@ -7,10 +7,10 @@ Parameters:
     Description: Name for S3 bucket to store files uploaded to AWS via the Transfer Family. 
 
 Resources:
-  PGPPrivateKeyTest:
+  PGPPrivateKey:
     Type: 'AWS::SecretsManager::Secret'
     Properties:
-      Name: PGP_PrivateKeyTest
+      Name: PGP_PrivateKey
       Description: Private key used for PGP decryption.
       SecretString: 'Within the Secrets Manager console, paste your PGP private key here'
 
@@ -36,7 +36,7 @@ Resources:
               Action:
                 - 'secretsmanager:GetSecretValue'
                 - 'secretsmanager:DescribeSecret'
-              Resource: !Ref PGPPrivateKeyTest
+              Resource: !Ref PGPPrivateKey
             - Effect: Allow
               Action:
                 - 'logs:*'
@@ -91,7 +91,7 @@ Resources:
           s3 = boto3.resource('s3')
           transfer = boto3.client('transfer')
           # privatekeyname needs to be named whatever your GPG private key is named in Secrets Manager. 
-          privatekeyname = 'PGP_PrivateKeyTest'
+          privatekeyname = 'PGP_PrivateKey'
 
 
           # Function to retrieve specified secret_value from secrets manager.     
