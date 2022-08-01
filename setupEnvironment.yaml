@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Create IAM roles
+Description: Template used to create PGPDecryptionLambdaExecutionRole, PGPDecryptionManagedWorklowRole, PGPDecryptionTransferFamilyUserRole, Custom PGP Decryption Lambda Function, PGP Private Key Secret, and S3 Bucket. 
 
 Parameters: 
   S3BucketName: 
