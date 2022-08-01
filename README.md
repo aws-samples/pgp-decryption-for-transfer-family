@@ -107,11 +107,12 @@
   - Refer to image for reference: 
 
 ![image](https://user-images.githubusercontent.com/59907142/182048535-da4463c1-4221-40dd-bd01-5b5f13ee1389.png)
-    - Click "Next"
-    - Name the secret in the format: server-id/username
+    
+  - Click "Next"
+  - Name the secret in the format: server-id/username
         - Example: s-177a84c346c05a528/testUser
         - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
-    - Select "Next" -> "Next" -> "Store"
+  - Select "Next" -> "Next" -> "Store"
     
 
 #### Option 2: Use an existing Transfer Family Server + Transfer Family User Account
