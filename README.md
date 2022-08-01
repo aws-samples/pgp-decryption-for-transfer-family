@@ -136,7 +136,7 @@
 - Paste in your PGP Private key
 - Select "Save"
 
-
+---
 
 ### Attach Managed Workflow to Transfer Family Server
 - On the Transfer Family console, select "Servers"
@@ -146,10 +146,13 @@
 - Select the Managed workflow execution role with the name: "PGPDecryptionManagedWorkflowRole"
 - Select "Save"
 
+---
 
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+---
 
 ## License
 
