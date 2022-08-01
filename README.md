@@ -13,6 +13,8 @@
 - Paste PGP Private Key into PGP_PrivateKey secret within Secrets Manager console. 
 - Attach Transfer Family Managed Workflow to Transfer Family server within Transfer Family console. 
 
+---
+
 ### Overview of Process
 1. Open up CloudShell and clone this GitHub repository. 
 2. Run setupEnvironment.sh bash script. 
@@ -24,6 +26,7 @@
 5. Add your PGP Private Key in Secrets Manager. 
 6. Attach Transfer Family Managed Workflow to Transfer Family server. 
 
+---
 
 ## Step-by-Step Instructions
 
