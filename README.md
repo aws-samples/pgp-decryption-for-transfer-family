@@ -114,7 +114,7 @@
                     
   - To get the specific role ARN and S3 bucket name, run the following command in your CloudShell: 
   
-    ``` aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" ```
+    ` aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" `
   
   
 ![image](https://user-images.githubusercontent.com/59907142/182047911-32e03149-6e3b-4bc5-bf97-6a234bfddc78.png)
