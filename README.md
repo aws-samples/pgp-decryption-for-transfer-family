@@ -113,8 +113,8 @@
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
 |       Password                                                                   |        TestPassword1234!                                                         |
 |       Role                                                                       |      arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole     |
-|       HomeDirectoryDetails                                                       |        TestPassword1234!                                                         |
-|       HomeDirectoryDetails                                                       |        TestPassword1234!                                                         |
+|       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/INSERT-S3-BUCKET-NAME/INSERT-USER-NAME"}]       |
+|       HomeDirectoryType                                                          |        LOGICAL                                                                   |
                    
 
                     
