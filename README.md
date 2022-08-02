@@ -106,6 +106,10 @@
   - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
+                    | Syntax      | Description |
+                    | ----------- | ----------- |
+                    | Header      | Title       |
+                    | Paragraph   | Text        |
     - Secret Key: **Password** || Secret Value: **TestPassword1234!**
  
     - Secret Key: **Role** || Secret Value: **arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole**
