@@ -97,9 +97,9 @@
         ![image](https://user-images.githubusercontent.com/59907142/181582434-2df2a594-d905-4b69-973b-2fa8880a350d.png)
 
 ##### Option 1 Continued: Create Custom Transfer Family Identity Provider User Account
-  - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
-  - Choose Other type of secret.
-  - Create the following key-value pairs. The key names are case-sensitive.
+    - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
+    - Choose Other type of secret.
+    - Create the following key-value pairs. The key names are case-sensitive.
 
 <div align="center">
     
@@ -112,20 +112,20 @@
 
 </div>                   
                     
-  - To get the specific role ARN and S3 bucket name, run the following command in your CloudShell: 
+    - To get the specific role ARN and S3 bucket name, run the following command in your CloudShell: 
   
-    ` aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" `
+        ` aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" `
   
   
 ![image](https://user-images.githubusercontent.com/59907142/182047911-32e03149-6e3b-4bc5-bf97-6a234bfddc78.png)
 
 ![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
     
-  - Click "Next"
-  - Name the secret in the format: server-id/username
-     - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
-     - Example: s-177a84c346c05a528/testUser
-  - Select "Next" -> "Next" -> "Store"
+    - Click "Next"
+    - Name the secret in the format: server-id/username
+        - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
+        - Example: s-177a84c346c05a528/testUser
+    - Select "Next" -> "Next" -> "Store"
     
 
 #### Option 2: Use an existing Transfer Family Server + Transfer Family User Account
