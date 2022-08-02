@@ -22,6 +22,17 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Join [ '', [!Ref S3BucketName, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled
 
 # Create IAM Lambda Execution role for the PGP Decryption Lambda function. 
   PGPDecryptionLambdaExecutionRole:
@@ -48,8 +59,11 @@ Resources:
               Resource: !Ref PGPPrivateKey
             - Effect: Allow
               Action:
-                - 'logs:*'
-              Resource: '*'
+                - "logs:CreateLogGroup"
+                - "logs:CreateLogStream"
+                - "logs:PutLogEvents"
+                - "logs:DescribeLogStreams"
+              Resource: 'arn:aws:logs:*:*:*'
             - Effect: Allow
               Action:
                 - 's3:Get*'
@@ -367,7 +381,6 @@ Outputs:
   S3Bucket:
     Description: "Name of S3 Bucket:"
     Value: !Join [ '', [!Ref S3BucketName, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
-
 
 
 
