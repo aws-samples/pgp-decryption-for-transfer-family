@@ -54,6 +54,7 @@
   
   `sam deploy --guided --capabilities CAPABILITY_NAMED_IAM`
   
+    - Respond to the following prompts: 
         - Enter in a stack name: 
         - Select a region: **Press enter to leave as default**
         - Enter in a name for the S3 bucket: 
