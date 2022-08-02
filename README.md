@@ -107,10 +107,10 @@
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
                    
-                    | Syntax      | Description |
-                    | ----------- | ----------- |
-                    | Header      | Title       |
-                    | Paragraph   | Text        |
+                    | Syntax                                       | Description                                  |
+                    | -------------------------------------------- | -------------------------------------------- |
+                    | Header                                       | Title                                        |
+                    | Paragraph                                    | Text                                         |
                     
     - Secret Key: **Password** || Secret Value: **TestPassword1234!**
  
