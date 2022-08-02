@@ -231,7 +231,6 @@ Resources:
                   print("Error downloading the file.")
                   sendWorkflowStatus(event, 'FAILURE')
 
-      Description: PGP Decryption function.
       TracingConfig:
         Mode: PassThrough
 
