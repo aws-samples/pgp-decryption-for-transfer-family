@@ -116,7 +116,7 @@
     - SAM configuration environment [default]: **Press enter to leave as default**
 
 
- ![image](https://user-images.githubusercontent.com/59907142/182434538-921371e8-37a7-4d66-ad3f-644e9b233a62.png)
+![image](https://user-images.githubusercontent.com/59907142/182436028-902168af-c2ce-4986-aa6a-827c9ce5c475.png)
 
 
 #### Option 1 Continued: Create Custom Transfer Family Identity Provider User Account in Secrets Manager
