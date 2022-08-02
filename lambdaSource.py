@@ -41,10 +41,12 @@ def createtempfile():
         pass
     
 # Function that downloads file from S3 specified S3 bucket, returns a boolean indicating if file download was a success/failure.  
-def downloadfile(bucketname, filename):
+def downloadfile(bucketname, key, filename):
     try:     
         newfilename = '/tmp/' + filename
-        s3_client.download_file(bucketname, filename, newfilename)
+        print("New File Name: " + newfilename)
+        print("Original File Name: " + filename)
+        s3_client.download_file(bucketname, key, newfilename)
         return os.path.exists(newfilename)
     except botocore.exceptions.ClientError as error:
         # Summary of what went wrong
@@ -88,8 +90,11 @@ def lambda_handler(event, context):
     bucket = event['fileLocation']['bucket']
     username = event['serviceMetadata']['transferDetails']['userName']
    
-    # Downloads file from S3.     
-    downloadStatus = downloadfile(bucket, object_path)
+    # Downloads file from S3.
+    print("Object Path: " + object_path)
+    print("Bucket: " + bucket)
+    downloadStatus = downloadfile(bucket, object_path, file)
+
     
     # Confirm that the file download was successful. 
     if (downloadStatus):
