@@ -109,13 +109,16 @@
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
 
+<center>
+    
 |         Secret Key                                                               |     Secret Value                                                                 |
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
 |       Password                                                                   |        TestPassword1234!                                                         |
 |       Role                                                                       |      arn:aws:iam::**INSERT-ACCOUNT-ID**:role/PGPDecryptionTransferFamilyUserRole |
 |       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/**INSERT-S3-BUCKET-NAME/INSERT-USER-NAME**"}]   |
 |       HomeDirectoryType                                                          |        LOGICAL                                                                   |
-                   
+
+</center>                   
                     
   - Refer to image for reference: 
 
