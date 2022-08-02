@@ -97,9 +97,10 @@
         ![image](https://user-images.githubusercontent.com/59907142/181582434-2df2a594-d905-4b69-973b-2fa8880a350d.png)
 
 ##### Option 1 Continued: Create Custom Transfer Family Identity Provider User Account
-    - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
-    - Choose Other type of secret.
-    - Create the following key-value pairs. The key names are case-sensitive.
+        - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
+    
+        - Choose Other type of secret.
+        - Create the following key-value pairs. The key names are case-sensitive.
 
 <div align="center">
     
