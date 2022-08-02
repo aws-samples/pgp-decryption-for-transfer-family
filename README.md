@@ -109,11 +109,11 @@
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
 
-|   |   |
-|---|---|
-|   |   |
-|   |   |
-|   |   |
+|                                   |                                  |
+|-----------------------------------|----------------------------------|
+|                                   |                                  |
+|                                   |                                  |
+|                                   |                                  |
                    
 
                     
