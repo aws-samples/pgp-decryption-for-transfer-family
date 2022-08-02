@@ -129,7 +129,7 @@
             - Example: s-177a84c346c05a528/testUser
  - Select "Next" -> "Next" -> "Store" 
  
- <div align="center"> Example secret for reference: </div> 
+ <div align="center"> **Example Secret for Reference** </div> 
 
 ![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
     
