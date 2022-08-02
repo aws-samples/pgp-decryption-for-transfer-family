@@ -101,20 +101,21 @@
     - Run the following command:
   
         `sam deploy --guided`
-      
-    - Enter in a stack name: 
-    - Select a region: **Press enter to leave as default**
-    - Parameter CreateServer [true]: **Press enter to leave as default**
-    - Parameter SecretsManagerRegion []: **Press enter to leave as default**
-    - Parameter TransferEndpointType [PUBLIC]: **Press enter to leave as default**
-    - Parameter TransferSubnetIDs []: **Press enter to leave as default**
-    - Parameter TransferVPCID []: **Press enter to leave as default**
-    - Confirm changes before deploy[y/N]: **n**
-    - Allow SAM CLI IAM role creation[Y/n]: **y**
-    - Disable rollback [y/N]: **n**
-    - Save arguments to configuration file [Y/n]: **y**
-    - SAM configuration file [samconfig.toml]: **Press enter to leave as default**
-    - SAM configuration environment [default]: **Press enter to leave as default**
+    
+    - Respond to the following prompts:
+        - Enter in a stack name: 
+        - Select a region: **Press enter to leave as default**
+        - Parameter CreateServer [true]: **Press enter to leave as default**
+        - Parameter SecretsManagerRegion []: **Press enter to leave as default**
+        - Parameter TransferEndpointType [PUBLIC]: **Press enter to leave as default**
+        - Parameter TransferSubnetIDs []: **Press enter to leave as default**
+        - Parameter TransferVPCID []: **Press enter to leave as default**
+        - Confirm changes before deploy[y/N]: **n**
+        - Allow SAM CLI IAM role creation[Y/n]: **y**
+        - Disable rollback [y/N]: **n**
+        - Save arguments to configuration file [Y/n]: **y**
+        - SAM configuration file [samconfig.toml]: **Press enter to leave as default**
+        - SAM configuration environment [default]: **Press enter to leave as default**
 
 
 ![image](https://user-images.githubusercontent.com/59907142/182436028-902168af-c2ce-4986-aa6a-827c9ce5c475.png)
