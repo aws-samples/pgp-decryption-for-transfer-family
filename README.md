@@ -122,9 +122,10 @@
   
 ![image](https://user-images.githubusercontent.com/59907142/182047911-32e03149-6e3b-4bc5-bf97-6a234bfddc78.png)
 
-#### Option 1 Continued: Name the Secret in the format - serverID/username
+#### Option 1 Continued: Finish Creating the Secret
  - Click "Next"
- - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
+ - Name the secret in the format: **serverID/username**
+    - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
  - Select "Next" -> "Next" -> "Store" 
  
  <div align="center"> <strong> Example Secret for Reference </strong> 
