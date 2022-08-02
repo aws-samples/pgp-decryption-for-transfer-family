@@ -1,10 +1,6 @@
 # PGP Decryption for Transfer Family
 
-|   |   |   |   |   |
-|---|---|---|---|---|
-|   |   |   |   |   |
-|   |   |   |   |   |
-|   |   |   |   |   |
+
 
 ## Project Requirements 
 ### Steps Completed by setupEnvironment.sh script
@@ -112,11 +108,14 @@
   - In the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager), create a new secret by choosing Store a new secret.
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
+
+|   |   |   |   |   |
+|---|---|---|---|---|
+|   |   |   |   |   |
+|   |   |   |   |   |
+|   |   |   |   |   |
                    
-                    | Syntax                                       | Description                                  |
-                    | -------------------------------------------- | -------------------------------------------- |
-                    | Header                                       | Title                                        |
-                    | Paragraph                                    | Text                                         |
+
                     
     - Secret Key: **Password** || Secret Value: **TestPassword1234!**
  
