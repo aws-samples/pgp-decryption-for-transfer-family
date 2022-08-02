@@ -79,6 +79,7 @@
   - In CloudShell, run the following: 
     
     - Create a new directory for this CloudFormation stack and change into the new directory: 
+        
         `mkdir tmp`  
         
         `cd tmp`
