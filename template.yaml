@@ -1,0 +1,374 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template used to create PGPDecryptionLambdaExecutionRole, PGPDecryptionManagedWorklowRole, PGPDecryptionTransferFamilyUserRole, Custom PGP Decryption Lambda Function, PGP Private Key Secret, and S3 Bucket. 
+
+# Prompt user to enter the name for their new S3 bucket. 
+Parameters: 
+  S3BucketName: 
+    Type: String 
+    Description: Name for S3 bucket to store files uploaded to AWS via the Transfer Family. 
+
+Resources:
+
+# Create PGP Private Key secret as a placeholder, users must paste in their PGP Private Key via the Secrets Manager console after deploying this stack. 
+  PGPPrivateKey:
+    Type: 'AWS::SecretsManager::Secret'
+    Properties:
+      Name: PGP_PrivateKey
+      Description: Private key used for PGP decryption.
+      SecretString: 'Within the Secrets Manager console, paste your PGP private key here'
+
+# Create S3 Bucket to store users files uploaded to AWS via the Transfer Family. 
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Join [ '', [!Ref S3BucketName, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
+
+# Create IAM Lambda Execution role for the PGP Decryption Lambda function. 
+  PGPDecryptionLambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: Role for Lambda execution
+      Policies:
+        - PolicyName: EmbeddedInlinePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - 'secretsmanager:GetSecretValue'
+              Resource: !Ref PGPPrivateKey
+            - Effect: Allow
+              Action:
+                - 'logs:*'
+              Resource: '*'
+            - Effect: Allow
+              Action:
+                - 's3:Get*'
+                - 's3:Put*'
+              Resource: !Join [ '', [!GetAtt S3Bucket.Arn, '/*']]
+            - Effect: Allow
+              Action:
+                - "transfer:SendWorkflowStepState"
+              Resource: 'arn:aws:transfer:*:*:*/*'
+      RoleName: PGPDecryptionLambdaExecutionRole
+
+# Create the Lambda function responsible for PGP decryption process. 
+  LambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Description: "Function responsible for performing PGP decryption process."
+      FunctionName: !Join [ '', [AutomatedPGPDecryption, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
+      Architectures: 
+        - "x86_64"
+      Runtime: python3.8
+      MemorySize: 256
+      Timeout: 20
+      Layers: 
+        - !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:PGPDecryptionLayer:1"
+      EphemeralStorage: 
+            Size: 512  
+      Role: !GetAtt PGPDecryptionLambdaExecutionRole.Arn
+      Handler: index.lambda_handler
+      Code:
+        ZipFile: |
+          import boto3
+          import botocore
+          import os
+          import gnupg
+          from botocore.exceptions import ClientError
+          import json
+          import logging
+          import pathlib
+
+          # Global variables declarations
+          session = boto3.session.Session()
+          secretsmanager_client = session.client('secretsmanager')
+          s3_client = boto3.client('s3')
+          s3 = boto3.resource('s3')
+          transfer = boto3.client('transfer')
+          # privatekeyname needs to be named whatever your GPG private key is named in Secrets Manager. 
+          privatekeyname = 'PGP_PrivateKey'
+
+
+          # Function to retrieve specified secret_value from secrets manager.     
+          def get_secret_details(secret_stored_location):
+             try:
+                 response = secretsmanager_client.get_secret_value(SecretId=secret_stored_location)
+                 return response['SecretString']
+             except ClientError as e:
+                 raise Exception("boto3 client error in get_secret_details: " + e.__str__())
+             except Exception as e:
+                 raise Exception("Unexpected error in get_secret_details: " + e.__str__())
+
+                
+          # Function that removes the .gpg or .asc file extension from encrypted files after decryption. 
+          def remove_file_extension(filename):
+              base = os.path.basename(filename)
+              os.path.splitext(base)
+              return os.path.splitext(base)[0]
+              
+              
+          # Function that creates a temporary file within the /tmp directory.     
+          def createtempfile():
+              with open('/tmp/tempfile.txt', 'w') as fp:
+                  pass
+              
+          # Function that downloads file from S3 specified S3 bucket, returns a boolean indicating if file download was a success/failure.  
+          def downloadfile(bucketname, key, filename):
+              try:     
+                  newfilename = '/tmp/' + filename
+                  s3_client.download_file(bucketname, key, newfilename)
+                  return os.path.exists(newfilename)
+              except botocore.exceptions.ClientError as error:
+                  # Summary of what went wrong
+                  print(error.response['Error']['Code'])
+                  # Explanation of what went wrong
+                  print(error.response['Error']['Message'])
+                  return False
+                  
+          # Function that checks if the uploaded file is encrypted or not and returns corresponding boolean.     
+          def checkEncryptionStatus(filename):
+              file_extension = pathlib.Path(filename).suffix
+              if (file_extension == '.asc' or file_extension == '.gpg' or file_extension == '.pgp'): 
+                  print("This file is encrypted, performing decryption now.")
+                  return True
+              else:
+                  print("This file is not GPG encrypted, no need to perform decryption.")
+                  return False
+                  
+          # Function that sends workflow step status back to TF Workflow. 
+          def sendWorkflowStatus(event, status):
+              # call the SendWorkflowStepState API to notify the workflow about the step's SUCCESS or FAILURE status
+              response = transfer.send_workflow_step_state(
+              WorkflowId=event['serviceMetadata']['executionDetails']['workflowId'],
+              ExecutionId=event['serviceMetadata']['executionDetails']['executionId'],
+              Token=event['token'],
+              Status = status
+              )
+              print(json.dumps(response))
+              return {
+                  'statusCode': 200,
+                  'body': json.dumps(response)
+              }
+
+              
+          # Lambda handler function
+          def lambda_handler(event, context):
+
+              # Assigning necessary values from event data to variables. 
+              object_path = event['fileLocation']['key']
+              file = (object_path.split('/')[-1])
+              bucket = event['fileLocation']['bucket']
+              username = event['serviceMetadata']['transferDetails']['userName']
+              downloadStatus = downloadfile(bucket, object_path, file)
+
+              
+              # Confirm that the file download was successful. 
+              if (downloadStatus):
+                  print("File was downloaded successfully")
+                  
+                  # Store local file name for decryption processing.  
+                  local_file_name = '/tmp/' + file
+              
+                  # Checks file extension
+                  encryptedStatus = checkEncryptionStatus(local_file_name)
+                  
+                  # If encryptedStatus = true, perform decryption. 
+                  if (encryptedStatus):
+                      
+                      # Create temp file.
+                      createtempfile()
+                      
+                      # Grabs private key from Secrets Manager. 
+                      PrivateKey = get_secret_details(privatekeyname)
+                      
+                      # Set GNUPG home directory and point to where the binary is stored. 
+                      gpg = gnupg.GPG(gnupghome='/tmp', gpgbinary='/opt/python/gpg', options=['--trust-model', 'always'])
+                      
+                      # Import the private key into GNUPG.
+                      private_import_result = gpg.import_keys(PrivateKey)
+                      
+                      # Perform decryption.
+                      with open(local_file_name, 'rb') as f:
+                          status = gpg.decrypt_file(f, passphrase = None, output='/tmp/tempfile.txt', always_trust = True)
+                          
+                      # Add if statement to account for fake gpgp file
+                      if (status.ok == True):
+                          print("Status: OK")
+                          # Remove .gpg or .asc file extension from file name.
+                          updatedfilename = remove_file_extension(file)
+                          # Store the newly decrypted file within the same S3 bucket, but in a different prefix. 
+                          updatedfilelocation = 'DecryptedFiles/' + username + '/' + updatedfilename
+                          # Uploading decrypted file into S3. 
+                          upload_file_name = '/tmp/tempfile.txt'
+                          s3_client.upload_file(upload_file_name, bucket, updatedfilelocation)
+                          sendWorkflowStatus(event, 'SUCCESS')
+                      else:
+                          print("Status: NOT OK")
+                          print('OK: ', status.ok)
+                          print('Decryption Status: ', status.status)
+                          print('Standard Error: ', status.stderr)
+                          sendWorkflowStatus(event, 'FAILURE')
+                      
+                  # Else, no need to decrypt. 
+                  else: 
+                      print("The uploaded file is not encrypted, it has been moved to the DecryptedFiles Prefix.")
+                      unencryptedfilelocation =  'DecryptedFiles/' + username + '/' + file
+                      s3 = boto3.client('s3')
+                      s3.upload_file(local_file_name, bucket, unencryptedfilelocation)
+                      sendWorkflowStatus(event, 'SUCCESS')
+              
+              else:
+                  print("Error downloading the file.")
+                  sendWorkflowStatus(event, 'FAILURE')
+
+      Description: PGP Decryption function.
+      TracingConfig:
+        Mode: PassThrough
+
+# Create IAM Transfer Family Workflow execution role for the Transfer Family managed workflow. 
+  PGPDecryptionManagedWorklowRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - transfer.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: Role to provide access to PGP Decryption Managed Workflow
+      Policies:
+        - PolicyName: EmbeddedInlinePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - 's3:GetBucketLocation'
+                - 's3:ListBucket'
+                - 's3:*Object'
+                - 's3:GetObjectVersion'
+                - 's3:PutObjectTagging'
+                - 's3:PutObjectVersionTagging'
+              Resource:
+                - !Join [ '', [!GetAtt S3Bucket.Arn, '/*']]
+                - !Join [ '', [!GetAtt S3Bucket.Arn, '*']]
+            - Effect: Allow
+              Action:
+                - 's3:GetBucketLocation'
+              Resource: '*'
+            - Effect: Allow
+              Action:
+                - 'lambda:InvokeFunction'
+              Resource: !GetAtt LambdaFunction.Arn
+            - Effect: Allow
+              Action:
+                - "transfer:SendWorkflowStepState"
+              Resource: 'arn:aws:transfer:*:*:*/*'
+      RoleName: PGPDecryptionManagedWorklowRole
+
+# Create IAM role for Transfer Family server with custom identity provider. 
+  PGPDecryptionTransferFamilyUserRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - transfer.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: Role to provide access to PGP Decryption Transfer Family User Role
+      Policies:
+        - PolicyName: EmbeddedInlinePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+            - Effect: Allow
+              Action:
+                - s3:ListBucket
+                - s3:PutObject
+                - s3:GetObject
+                - s3:DeleteObject
+                - s3:DeleteObjectVersion
+                - s3:GetObjectVersion
+              Resource:
+                - !Join [ '', [!GetAtt S3Bucket.Arn, '/*']]
+                - !Join [ '', [!GetAtt S3Bucket.Arn, '*']]
+      RoleName: PGPDecryptionTransferFamilyUserRole
+
+# Create Transfer Family managed workflow. 
+  PGPDecryptionTransferWorkflow:
+    Type: AWS::Transfer::Workflow
+    Properties:
+      Description: Transfer Family Workflow for PGP decryption process
+      Steps:
+        - Type: COPY
+          CopyStepDetails:
+            Name: CopyToArchive
+            DestinationFileLocation:
+              S3FileLocation:
+                Bucket: !Join [ '', [!Ref S3BucketName, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
+                Key: Archive/${transfer:UserName}/
+            OverwriteExisting: 'FALSE'
+        - Type: TAG
+          TagStepDetails:
+            Name: TagFileForArchive
+            Tags:
+              - Key: status
+                Value: archived
+        - Type: CUSTOM
+          CustomStepDetails:
+            Name: PGPDecryption
+            Target: !GetAtt LambdaFunction.Arn
+            TimeoutSeconds: 20
+            SourceFileLocation: '${original.file}'
+        - Type: DELETE
+          DeleteStepDetails:
+            Name: DeleteOriginalFile
+            SourceFileLocation: '${original.file}'
+      OnExceptionSteps:
+        - Type: COPY
+          CopyStepDetails:
+            Name: CopyToFailedDecryptionPrefix
+            DestinationFileLocation:
+              S3FileLocation:
+                Bucket: !Join [ '', [!Ref S3BucketName, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
+                Key: FailedDecryption/${transfer:UserName}/
+        - Type: TAG
+          TagStepDetails:
+            Name: TagFailedDecryption
+            Tags:
+              - Key: status
+                Value: failed-decryption
+        - Type: DELETE
+          DeleteStepDetails:
+            Name: DeleteOriginalFile
+            SourceFileLocation: '${original.file}'
+
+# Make it easier to access the required S3 bucket name and Transfer Family User role ARN for custom Transfer Family identity provider user creation process. 
+Outputs:
+  RoleArn:
+    Description: "Transfer Family User Arn:"
+    Value: !GetAtt PGPDecryptionTransferFamilyUserRole.Arn
+  S3Bucket:
+    Description: "Name of S3 Bucket:"
+    Value: !Join [ '', [!Ref S3BucketName, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
+
+
+
+
