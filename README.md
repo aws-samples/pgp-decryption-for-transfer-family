@@ -116,17 +116,7 @@
 |       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/INSERT-S3-BUCKET-NAME/INSERT-USER-NAME"}]       |
 |       HomeDirectoryType                                                          |        LOGICAL                                                                   |
                    
-
                     
-    - Secret Key: **Password** || Secret Value: **TestPassword1234!**
- 
-    - Secret Key: **Role** || Secret Value: **arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole**
-      - Refer to the values.txt file created earlier in CloudShell for the exact ARN required. 
-     
-    - Secret Key: **HomeDirectoryDetails** || Secret Value: **[{"Entry": "/", "Target": "/INSERT-S3-BUCKET-NAME/INSERT-USER-NAME"}]**
-      - Refer to the values.txt file created earlier in CloudShell for the exact S3 bucket name required. 
-      
-     - Secret Key: **HomeDirectoryType** || Secret Value: **LOGICAL**
   - Refer to image for reference: 
 
 ![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
