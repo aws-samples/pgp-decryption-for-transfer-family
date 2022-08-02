@@ -128,7 +128,8 @@
             - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
             - Example: s-177a84c346c05a528/testUser
  - Select "Next" -> "Next" -> "Store" 
- - Example secret for reference: 
+ 
+ <div align="center"> Example secret for reference: </div> 
 
 ![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
     
