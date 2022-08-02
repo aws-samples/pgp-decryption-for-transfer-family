@@ -44,8 +44,6 @@ def createtempfile():
 def downloadfile(bucketname, key, filename):
     try:     
         newfilename = '/tmp/' + filename
-        print("New File Name: " + newfilename)
-        print("Original File Name: " + filename)
         s3_client.download_file(bucketname, key, newfilename)
         return os.path.exists(newfilename)
     except botocore.exceptions.ClientError as error:
@@ -89,10 +87,6 @@ def lambda_handler(event, context):
     file = (object_path.split('/')[-1])
     bucket = event['fileLocation']['bucket']
     username = event['serviceMetadata']['transferDetails']['userName']
-   
-    # Downloads file from S3.
-    print("Object Path: " + object_path)
-    print("Bucket: " + bucket)
     downloadStatus = downloadfile(bucket, object_path, file)
 
     
