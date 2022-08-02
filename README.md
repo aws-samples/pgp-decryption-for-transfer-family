@@ -55,15 +55,7 @@
   `sam deploy --guided --capabilities CAPABILITY_NAMED_IAM`
   
   
-- After the stack creation process completes, run this command and document the ARN, and S3 bucket name: (Required for Custom Transfer Family IDP user creation)
-  
-  `aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" > values.txt`
-  
-  - To access the required ARN / S3 Bucket name needed for Custom Transfer Family IDP user creation, run this command: 
-  
-    `cat values.txt`
-  
-![image](https://user-images.githubusercontent.com/59907142/182047911-32e03149-6e3b-4bc5-bf97-6a234bfddc78.png)
+
 
 
 --- 
@@ -120,7 +112,12 @@
 
 </div>                   
                     
-  - Refer to image for reference: 
+  - To get the specific role ARN and S3 bucket name, run the following command in your CloudShell: 
+  
+        `aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:"`
+  
+  
+![image](https://user-images.githubusercontent.com/59907142/182047911-32e03149-6e3b-4bc5-bf97-6a234bfddc78.png)
 
 ![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
     
