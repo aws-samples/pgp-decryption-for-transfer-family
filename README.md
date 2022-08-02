@@ -112,8 +112,8 @@
 |         Secret Key                                                               |     Secret Value                                                                 |
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
 |       Password                                                                   |        TestPassword1234!                                                         |
-|       Role                                                                       |      arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole     |
-|       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/INSERT-S3-BUCKET-NAME/INSERT-USER-NAME"}]       |
+|       Role                                                                       |      arn:aws:iam::**INSERT-ACCOUNT-ID**:role/PGPDecryptionTransferFamilyUserRole |
+|       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/**INSERT-S3-BUCKET-NAME/INSERT-USER-NAME**"}]   |
 |       HomeDirectoryType                                                          |        LOGICAL                                                                   |
                    
                     
