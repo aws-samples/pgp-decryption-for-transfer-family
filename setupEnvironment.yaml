@@ -118,10 +118,10 @@ Resources:
                   pass
               
           # Function that downloads file from S3 specified S3 bucket, returns a boolean indicating if file download was a success/failure.  
-          def downloadfile(bucketname, filename):
+          def downloadfile(bucketname, key, filename):
               try:     
                   newfilename = '/tmp/' + filename
-                  s3_client.download_file(bucketname, filename, newfilename)
+                  s3_client.download_file(bucketname, key, newfilename)
                   return os.path.exists(newfilename)
               except botocore.exceptions.ClientError as error:
                   # Summary of what went wrong
@@ -164,9 +164,8 @@ Resources:
               file = (object_path.split('/')[-1])
               bucket = event['fileLocation']['bucket']
               username = event['serviceMetadata']['transferDetails']['userName']
-             
-              # Downloads file from S3.     
-              downloadStatus = downloadfile(bucket, object_path)
+              downloadStatus = downloadfile(bucket, object_path, file)
+
               
               # Confirm that the file download was successful. 
               if (downloadStatus):
@@ -226,6 +225,7 @@ Resources:
               else:
                   print("Error downloading the file.")
                   sendWorkflowStatus(event, 'FAILURE')
+
 
       Description: PGP Decryption function.
       TracingConfig:
@@ -371,7 +371,6 @@ Outputs:
   S3Bucket:
     Description: "Name of S3 Bucket:"
     Value: !Ref S3BucketName
-
 
 
 
