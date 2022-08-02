@@ -122,11 +122,10 @@
   
 ![image](https://user-images.githubusercontent.com/59907142/182047911-32e03149-6e3b-4bc5-bf97-6a234bfddc78.png)
 
-#### Option 1 Continued: Finishing User Creation in Secrets Manager
+#### Option 1 Continued: Name the Secret in the format - serverID/username
  - Click "Next"
-        - Name the secret in the format: server-id/username
-            - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
-            - Example: s-177a84c346c05a528/testUser
+        - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
+        - Example: s-177a84c346c05a528/testUser
  - Select "Next" -> "Next" -> "Store" 
  
  <div align="center"> **Example Secret for Reference** </div> 
