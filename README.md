@@ -54,9 +54,9 @@
   
   `sam deploy --guided --capabilities CAPABILITY_NAMED_IAM`
   
-    - Enter in a stack name: **Example - pgpdecryptionstack**
-    - Select a region **Press enter to leave as default**
-    - Enter in a name for the S3 bucket **Example - pgp-decryption-bucket**
+    - Enter in a stack name: 
+    - Select a region: **Press enter to leave as default**
+    - Enter in a name for the S3 bucket: 
     - Respond to the following prompts: 
         - Confirm changes before deploy[y/N]: **n**
         - Allow SAM CLI IAM role creation[Y/n]: **y**
