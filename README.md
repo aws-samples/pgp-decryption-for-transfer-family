@@ -101,8 +101,19 @@
   
         `sam deploy --guided`
       
-    - Enter in a stack name (Example: TransferFamilyServer)
-    - Press enter for all other options to leave them as default, refer to image for reference:
+    - Enter in a stack name: 
+    - Select a region: **Press enter to leave as default**
+    - Parameter CreateServer [true]: **Press enter to leave as default**
+    - Parameter SecretsManagerRegion []: **Press enter to leave as default**
+    - Parameter TransferEndpointType [PUBLIC]: **Press enter to leave as default**
+    - Parameter TransferSubnetIDs []: **Press enter to leave as default**
+    - Parameter TransferVPCID []: **Press enter to leave as default**
+    - Confirm changes before deploy[y/N]: **n**
+    - Allow SAM CLI IAM role creation[Y/n]: **y**
+    - Disable rollback [y/N]: **n**
+    - Save arguments to configuration file [Y/n]: **y**
+    - SAM configuration file [samconfig.toml]: **Press enter to leave as default**
+    - SAM configuration environment [default]: **Press enter to leave as default**
 
 
  ![image](https://user-images.githubusercontent.com/59907142/182434538-921371e8-37a7-4d66-ad3f-644e9b233a62.png)
