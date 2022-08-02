@@ -130,12 +130,13 @@
  
  - Select "Next" -> "Next" -> "Store" 
  
- <div align="center"> <strong> Example Secret for Reference </strong> </div>
+ <div align="center"> <strong> Example Secret for Reference </strong> 
  
 ![image](https://user-images.githubusercontent.com/59907142/182291079-499c7d6e-17e7-4757-a843-f7b94ecd6666.png)
 
 ![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
-    
+
+  </div>
 
 #### Option 2: Use an existing Transfer Family Server + Transfer Family User Account
 - No configuration needed at this time, proceed to next step of pasting your PGP Private Key into the PGP_PrivateKey secret within Secrets Manager.  
