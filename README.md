@@ -125,15 +125,11 @@
 #### Option 1 Continued: Name the Secret in the format - serverID/username
  - Click "Next"
  - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
- 
-    - Example Secret Name: s-177a84c346c05a528/testUser
- 
  - Select "Next" -> "Next" -> "Store" 
  
  <div align="center"> <strong> Example Secret for Reference </strong> 
  
 ![image](https://user-images.githubusercontent.com/59907142/182291079-499c7d6e-17e7-4757-a843-f7b94ecd6666.png)
-
 ![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
 
   </div>
