@@ -109,7 +109,7 @@
   - Choose Other type of secret.
   - Create the following key-value pairs. The key names are case-sensitive.
 
-<center>
+<div align="center">
     
 |         Secret Key                                                               |     Secret Value                                                                 |
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
@@ -118,7 +118,7 @@
 |       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/**INSERT-S3-BUCKET-NAME/INSERT-USER-NAME**"}]   |
 |       HomeDirectoryType                                                          |        LOGICAL                                                                   |
 
-</center>                   
+</div>                   
                     
   - Refer to image for reference: 
 
