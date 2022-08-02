@@ -105,7 +105,7 @@
     - Press enter for all other options to leave them as default, refer to image for reference:
 
 
-        ![image](https://user-images.githubusercontent.com/59907142/182434538-921371e8-37a7-4d66-ad3f-644e9b233a62.png)
+ ![image](https://user-images.githubusercontent.com/59907142/182434538-921371e8-37a7-4d66-ad3f-644e9b233a62.png)
 
 
 #### Option 1 Continued: Create Custom Transfer Family Identity Provider User Account in Secrets Manager
