@@ -111,10 +111,10 @@
 
 |         Secret Key                                                               |     Secret Value                                                                 |
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
-|       **Password**                                                               |        **TestPassword1234!**                                                     |
-|       **Role**                                                                   |     **arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole**  |
-|       **HomeDirectoryDetails**                                                   |        **TestPassword1234!**                                                     |
-|       **HomeDirectoryDetails**                                                   |        **TestPassword1234!**                                                     |
+|       Password                                                                   |        TestPassword1234!                                                         |
+|       Role                                                                       |      arn:aws:iam::INSERT-ACCOUNT-ID:role/PGPDecryptionTransferFamilyUserRole     |
+|       HomeDirectoryDetails                                                       |        TestPassword1234!                                                         |
+|       HomeDirectoryDetails                                                       |        TestPassword1234!                                                         |
                    
 
                     
