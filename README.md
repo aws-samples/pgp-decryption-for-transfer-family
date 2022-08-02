@@ -155,7 +155,7 @@
  <div align="center"> <strong> Example Secret for Reference </strong> 
  
 ![image](https://user-images.githubusercontent.com/59907142/182291079-499c7d6e-17e7-4757-a843-f7b94ecd6666.png)
-![image](https://user-images.githubusercontent.com/59907142/182275511-c049f28f-4de9-4f43-b34a-e30df6224d66.png)
+![image](https://user-images.githubusercontent.com/59907142/182437884-3d4e6df7-97c4-4605-b62e-d80723c53650.png)
 
   </div>
 
