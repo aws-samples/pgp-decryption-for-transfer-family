@@ -7,7 +7,7 @@
 - Custom Lambda Layer including required binary/python package.
 
 ### Steps Completed by CloudFormation Stack
-- REQUIRED - Setup Environment Stack: Creates necessary IAM Roles, Lambda Function, and S3 Bucket.
+- REQUIRED - Setup Environment Stack: Creates necessary IAM Roles, Lambda Function, PGP_PrivateKey Secret, and S3 Bucket.
 
 - OPTIONAL - Custom Transfer Family Identity Provider Stack: Creates a Transfer Family server with a custom Lambda identity provider.
 
