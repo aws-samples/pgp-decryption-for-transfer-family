@@ -87,7 +87,7 @@ Resources:
       MemorySize: 256
       Timeout: 20
       Layers: 
-        - !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:PGPDecryptionLayer:1"
+        - !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:python-gnupg:1"
       EphemeralStorage: 
             Size: 512  
       Role: !GetAtt PGPDecryptionLambdaExecutionRole.Arn
