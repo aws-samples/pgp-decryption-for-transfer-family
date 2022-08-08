@@ -150,7 +150,12 @@
 #### Option 1 Continued: Finish Creating the Secret
  - Click "Next"
  - Name the secret in the format: **serverID/username**
-    - To find the name of the Transfer Family server, go to the Transfer Family console, and select "Servers". 
+    - If you deployed Transfer Family CloudFormation stack: 
+        - Go to CloudFormation console and select: Stacks -> Stack 1 Name (Ex. transferFamilyServer) -> Outputs
+            - Select "ServerId"    
+    - If you did not deploy Transfer Family CloudFormation stack: 
+        - Go to the Transfer Family console, select "Servers", and then select the appropriate serverId. 
+ 
  - Select "Next" -> "Next" -> "Store" 
  
  <div align="center"> <strong> Example Secret for Reference </strong> 
