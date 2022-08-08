@@ -140,10 +140,12 @@
 </div>                   
 
 #### Option 1 Continued: Getting Required Values from CloudFormation Console
-- To get the specific role ARN and S3 bucket name, go to the CloudFormation console -> Stacks -> Stack 1 Name (Ex. pgpdecryptionstack) -> Output : 
+- To get the specific role ARN and S3 bucket name, go to the CloudFormation console and select:
+    
+    -  Stacks -> Stack 1 Name (Ex. pgpdecryptionstack) -> Output 
  
   
-![image](https://user-images.githubusercontent.com/59907142/183429229-6d9e983d-3b18-4f12-9913-0d78b7edae66.png)
+![image](https://user-images.githubusercontent.com/59907142/183429862-5a25cef5-c4d8-4927-85bc-c9367e2a1c01.png)
 
 #### Option 1 Continued: Finish Creating the Secret
  - Click "Next"
