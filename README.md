@@ -142,7 +142,7 @@
 #### Option 1 Continued: Getting Required Values from CloudFormation Console
 - To get the specific role ARN and S3 bucket name, go to the CloudFormation console and select:
     
-    -  Stacks -> Stack 1 Name (Ex. pgpdecryptionstack) -> Output 
+    -  Stacks -> Stack 1 Name (Ex. pgpdecryptionstack) -> Outputs 
  
   
 ![image](https://user-images.githubusercontent.com/59907142/183429862-5a25cef5-c4d8-4927-85bc-c9367e2a1c01.png)
