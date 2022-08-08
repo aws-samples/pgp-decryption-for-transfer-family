@@ -139,12 +139,11 @@
 
 </div>                   
 
-#### Option 1 Continued: Getting Required Values from CloudShell
-- To get the specific role ARN and S3 bucket name, run the following command in your CloudShell: 
+#### Option 1 Continued: Getting Required Values from CloudFormation Console
+- To get the specific role ARN and S3 bucket name, go to the CloudFormation console -> Stacks -> Stack 1 Name (Ex. pgpdecryptionstack) -> Output : 
  
-    ` aws cloudformation describe-stacks | grep -B 6 "Transfer Family User Arn:" `
   
-![image](https://user-images.githubusercontent.com/59907142/182437503-d0c71898-71b6-453a-b3ad-3f9a5df53ce2.png)
+![image](https://user-images.githubusercontent.com/59907142/183429229-6d9e983d-3b18-4f12-9913-0d78b7edae66.png)
 
 #### Option 1 Continued: Finish Creating the Secret
  - Click "Next"
