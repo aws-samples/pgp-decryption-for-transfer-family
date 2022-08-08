@@ -73,7 +73,7 @@ Resources:
               Action:
                 - "transfer:SendWorkflowStepState"
               Resource: 'arn:aws:transfer:*:*:*/*'
-      RoleName: PGPDecryptionLambdaExecutionRole
+      RoleName: !Join [ '', [PGPDecryptionLambdaExecutionRole, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
 
 # Create the Lambda function responsible for PGP decryption process. 
   LambdaFunction:
@@ -290,7 +290,7 @@ Resources:
               Action:
                 - "transfer:SendWorkflowStepState"
               Resource: 'arn:aws:transfer:*:*:*/*'
-      RoleName: PGPDecryptionManagedWorklowRole
+      RoleName: !Join [ '', [PGPDecryptionManagedWorklowRole, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]] 
 
 # Create IAM role for Transfer Family server with custom identity provider. 
   PGPDecryptionTransferFamilyUserRole:
@@ -322,7 +322,7 @@ Resources:
               Resource:
                 - !Join [ '', [!GetAtt S3Bucket.Arn, '/*']]
                 - !Join [ '', [!GetAtt S3Bucket.Arn, '*']]
-      RoleName: PGPDecryptionTransferFamilyUserRole
+      RoleName: !Join [ '', [PGPDecryptionTransferFamilyUserRole, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]] 
 
 # Create Transfer Family managed workflow. 
   PGPDecryptionTransferWorkflow:
@@ -381,6 +381,5 @@ Outputs:
   S3Bucket:
     Description: "Name of S3 Bucket:"
     Value: !Join [ '', [!Ref S3BucketName, !Select [0, !Split [-, !Select [2, !Split [/, !Ref AWS::StackId ]]]]]]
-
 
 
