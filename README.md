@@ -80,7 +80,7 @@
   
 
 #### Option 1: Deploying CloudFormation Stack to Create Transfer Family Server with Custom Identity Provider
-- Refer to this link for detailed instructions on deploying a CloudFormation stack that will create a Transfer Family server, custom identity provider, and all the required IAM policies: https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/
+- Refer to this link for detailed instructions on deploying a CloudFormation stack that will create a Transfer Family server, custom identity provider, and all the required IAM policies:  <a href = "https://aws.amazon.com/blogs/storage/enable-password-authentication-for-aws-transfer-family-using-aws-secrets-manager-updated/">Enable password authentication for AWS Transfer Family using AWS Secrets Manager</a>
 - Short Summary of Steps Required: 
   - In CloudShell, run the following: 
     
