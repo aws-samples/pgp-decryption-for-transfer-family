@@ -20,7 +20,7 @@
 ### Overview of Process
 1. Open CloudShell and clone this GitHub repository. 
 2. Run setupEnvironment.sh bash script. 
-3. Deploy setupEnvironment.yaml CloudFormation stack which creates necessary IAM Roles, Lambda Function, and S3 Bucket.
+3. Deploy template.yaml CloudFormation stack which creates necessary IAM Roles, Lambda Function, PGP Private Key Secret, and S3 Bucket.
 4. Create a Transfer Family Server / Transfer Family User. (Must pick one of the following options)
     - Option 1: Deploy a Transfer Family server with a custom Secrets Manager based identity provider via CloudFormation stack.
     - Option 2: Use an existing Transfer Family server that is already configured within your environment. 
@@ -35,7 +35,7 @@
 ### CloudShell - Deploying setupEnvironment bash script and CloudFormation stacks.
 
 - Open CloudShell within your AWS account. 
-- Run the following command to clone this Git repository to access all the required files for this project: 
+- Run the following command to clone this Git repository to access the required files for this project: 
   
   `git clone https://github.com/aws-samples/pgp-decryption-for-transfer-family.git`
   
