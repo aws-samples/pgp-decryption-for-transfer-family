@@ -161,7 +161,7 @@
  <div align="center"> <strong> Example Secret for Reference </strong> 
  
 ![image](https://user-images.githubusercontent.com/59907142/182291079-499c7d6e-17e7-4757-a843-f7b94ecd6666.png)
-![image](https://user-images.githubusercontent.com/59907142/182437884-3d4e6df7-97c4-4605-b62e-d80723c53650.png)
+![image](https://user-images.githubusercontent.com/59907142/183749422-e96d0fd5-7ee0-413b-a351-f2d1cb801c64.png)
 
   </div>
 
