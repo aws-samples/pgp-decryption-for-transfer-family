@@ -1,5 +1,9 @@
 # PGP Decryption for Transfer Family
 
+## Project Architecture Diagram
+![image](https://user-images.githubusercontent.com/59907142/183982218-031ca1a6-41cc-4dac-9a1c-c82c0faf49eb.png)
+
+---
 
 
 ## Project Requirements 
