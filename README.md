@@ -1,5 +1,9 @@
 # PGP Decryption for Transfer Family
 
+## Announcement
+On Dec 22, 2022, AWS Transfer Family announces built-in support for PGP decryption of files uploaded over SFTP, FTPS or FTP to Amazon S3 or Amazon EFS. Customers can now configure and automate decryption of files that are encrypted using PGP keys by their users before upload, making it easy to meet their data protection and compliance requirements when exchanging sensitive data with third parties.
+https://aws.amazon.com/about-aws/whats-new/2022/12/aws-transfer-family-built-in-pgp-decryption-file-uploads/ 
+
 ## Project Architecture Diagram
 ![image](https://user-images.githubusercontent.com/59907142/183982218-031ca1a6-41cc-4dac-9a1c-c82c0faf49eb.png)
 
