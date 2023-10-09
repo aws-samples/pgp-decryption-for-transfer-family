@@ -130,7 +130,7 @@ https://aws.amazon.com/about-aws/whats-new/2022/12/aws-transfer-family-built-in-
 
 
 #### Option 1 Continued: Create Custom Transfer Family Identity Provider User Account in Secrets Manager
-- Naviage to the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager)
+- Navigate to the AWS Secrets Manager console (https://console.aws.amazon.com/secretsmanager)
     - Create a new secret by choosing Store a new secret.
         - Choose Other type of secret.
         - Create the following key-value pairs. The key names are case-sensitive.
@@ -141,7 +141,7 @@ https://aws.amazon.com/about-aws/whats-new/2022/12/aws-transfer-family-built-in-
 |         Secret Key                                                               |     Secret Value                                                                 |
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
 |       Password                                                                   |        TestPassword1234!                                                         |
-|       Role                                                                       |      arn:aws:iam::**INSERT-ACCOUNT-ID**:role/PGPDecryptionTransferFamilyUserRole |
+|       Role                                                                       |      INSERT-TRANSER-FAMILY-USER-ROLE (Can be found in CloudFormation stack output |
 |       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/**INSERT-S3-BUCKET-NAME/INSERT-USER-NAME**"}]   |
 |       HomeDirectoryType                                                          |        LOGICAL                                                                   |
 
@@ -157,7 +157,7 @@ https://aws.amazon.com/about-aws/whats-new/2022/12/aws-transfer-family-built-in-
 
 #### Option 1 Continued: Finish Creating the Secret
  - Click "Next"
- - Name the secret in the format: **serverID/username**
+ - Name the secret in the format: **aws/transfer/server-id/username**
     - If you deployed Transfer Family CloudFormation stack: 
         - Go to CloudFormation console and select: Stacks -> Stack 1 Name (Ex. transferFamilyServer) -> Outputs
             - Select "ServerId"    
