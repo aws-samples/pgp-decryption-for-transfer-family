@@ -141,7 +141,7 @@ https://aws.amazon.com/about-aws/whats-new/2022/12/aws-transfer-family-built-in-
 |         Secret Key                                                               |     Secret Value                                                                 |
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
 |       Password                                                                   |        TestPassword1234!                                                         |
-|       Role                                                                       |      INSERT-TRANSER-FAMILY-USER-ROLE (Can be found in CloudFormation stack output) |
+|       Role                                                                       |      INSERT-TRANSER-FAMILY-USER-ROLE-ARN (Can be found in CloudFormation stack output) |
 |       HomeDirectoryDetails                                                       |      [{"Entry": "/", "Target": "/**INSERT-S3-BUCKET-NAME/INSERT-USER-NAME**"}]   |
 |       HomeDirectoryType                                                          |        LOGICAL                                                                   |
 
@@ -168,7 +168,6 @@ https://aws.amazon.com/about-aws/whats-new/2022/12/aws-transfer-family-built-in-
  
  <div align="center"> <strong> Example Secret for Reference </strong> 
  
-![image](https://user-images.githubusercontent.com/59907142/182291079-499c7d6e-17e7-4757-a843-f7b94ecd6666.png)
 ![image](https://user-images.githubusercontent.com/59907142/183749422-e96d0fd5-7ee0-413b-a351-f2d1cb801c64.png)
 
   </div>
