@@ -53,7 +53,7 @@ https://aws.amazon.com/about-aws/whats-new/2022/12/aws-transfer-family-built-in-
 
 - Run this command to give the setupEnvironment.sh script executable permissions: 
   
-  `chmod + x setupEnvironment.sh`
+  `chmod +x setupEnvironment.sh`
   
 - Run this command to create the required IAM roles and Lambda layer:
   
