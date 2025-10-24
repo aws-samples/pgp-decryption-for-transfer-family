@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Template used to create PGPDecryptionLambdaExecutionRole, PGPDecryptionManagedWorklowRole, PGPDecryptionTransferFamilyUserRole, Custom PGP Decryption Lambda Function, PGP Private Key Secret, and S3 Bucket. 
+Description: Template used to create PGPDecryptionLambdaExecutionRole, PGPDecryptionManagedWorklowRole, PGPDecryptionTransferFamilyUserRole, Custom PGP Decryption Lambda Function, PGP Private Key Secret, and S3 Bucket. (uksb-38mtpwlgag)
 
 # Prompt user to enter the name for their new S3 bucket. 
 Parameters: 
